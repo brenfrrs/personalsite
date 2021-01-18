@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <link rel="icon" href="static/robot1.svg">
+  <link rel="stylesheet" type="text/css" href="static/styles.css"/>
+  <title>Brendan Ferris</title>
+  <script src = "https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+<!--
+___                 _             ___            _
+| _ )_ _ ___ _ _  __| |__ _ _ _   | __|__ _ _ _ _(_)___
+| _ \ '_/ -_) ' \/ _` / _` | ' \  | _/ -_) '_| '_| (_-<
+|___/_| \___|_||_\__,_\__,_|_||_| |_|\___|_| |_| |_/__/
+
+Email: >>>>>> brendanfrrs@gmail.com
+LinkedIn: >>> https://www.linkedin.com/in/brendangferris/
+GitHub: >>>>> https://github.com/brenfrrs
+-->
+<body>
+<div>
+    <div class="botText">
+        <p><img class="robot_pic" src="static/robotics.svg"/>Hey, I'm [Cyber]Brendan. It's great to meet you! You can ask me all kinds of questions, for a full list of questions/topics that I know, just type "help" below.</p>
+    </div>
+<div id = "chatbox">
+<!-- All the text goes here -->
+</div>
+</div>
+</body>
+<div class="footer">
+    <div id = "userInput">
+        <div id=searchform>
+            <div id="inputs">
+                <input id ="textInput" type ="text" name="msg" placeholder="Ask me something.. Or type 'help'">
+                    <p id="foot"><a href="#" class="footer_links">Projects</a> | <a href="#" class="footer_links">Blog</a> | <a href="#" class="footer_links">Datasets</a></p>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+
+function ScrollToBottom(){
+    window.scrollTo(0,document.body.scrollHeight);
+}
+
+
+function getBotResponse(){
+    var rawText = $("#textInput").val();
+    var userHtml =  '<div class="dynamic"> <p class = "userText"> <img class="robot_pic" src="static/right-arrow.svg"/>' + rawText + '</p> </div>';
+    $("#textInput").val("");
+    $("#chatbox").append(userHtml);
+    $.get("/get", {msg:rawText }).done(function(data) {
+    var botHtml = '<div class="dynamic">' + '<p class ="botText"> <img class="robot_pic" src="static/robotics.svg"/>' + data + '</p> </div>';
+    $("#chatbox").append(botHtml);
+    ScrollToBottom();
+    });
+};
+
+$("#textInput").keypress(function(e) {
+    if(e.which == 13) {
+        getBotResponse();
+        ScrollToBottom();
+    }
+});
+
+// $("#buttonInput").click(function() {
+//     getBotResponse();
+// })
+</script>
+</html>
