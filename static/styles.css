@@ -11,7 +11,7 @@ display: inline-block;
 
 
 p {
-overflow: scroll;
+overflow: visible;
 font-family: 'Source Code Pro', monospace;
 font-size: 28px;
 color: rgba(255,255,255,.70);
@@ -101,6 +101,7 @@ img.robot_pic {
     float:left;
     height: 40px;
     width:60px;
+    margin-right: 5px;
 
 }
 
@@ -129,6 +130,19 @@ p.userText {
     color:gray;
 }
 
-span#pop {
-    color: red;
+img.emoji {
+    /* height:10%;
+    width:10%; */
+    height:33px;
+}
+
+img.large {
+    width: 80%;
+    height: auto;
+}
+
+span.emojicontainer {
+    height:80%;
+    width:100%;
+    vertical-align: middle;
 }
