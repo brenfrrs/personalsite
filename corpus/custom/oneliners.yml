@@ -71,19 +71,17 @@ conversations:
 - - not so good
   - I'm sorry to hear that, feel free to vent to my cyber-personality!
 - - resume
-  - If you reach out to me via email [brendanfrrs@gmail.com], I would be happy to send you a copy.
+  - If you reach out to me via <span class="emojicontainer"><a href="mailto:brendanfrrs@gmail.com?subject=Resume Request&body=I saw you online, can you send me a copy of your resume?"><img class="emoji" src="static/response_imgs/gmail.svg"/></a></span>, I would be happy to send you a copy.
 - - Python
   - I mainly code in python, it's my language of choice! It's cool being able to speak the same language as the computer.. The possibilities are endless.
-- - email
-  - It's brendanfrrs@gmail.com, feel free to reach out!
 - - show me email
-  - It's brendanfrrs@gmail.com, feel free to reach out!
+  - It's brendanfrrs@gmail.com, feel free to reach out --> <span class="emojicontainer"><a href="mailto:brendanfrrs@gmail.com?subject=Hey Brendan&body=I saw you online, lets connect!"><img class="emoji" src="static/response_imgs/gmail.svg"/></a></span>
 - - email
-  - It's brendanfrrs@gmail.com, feel free to reach out!
+  - <span class="emojicontainer"><a href="mailto:brendanfrrs@gmail.com?subject=Hey Brendan&body=I saw you online, lets connect!"><img class="emoji" src="static/response_imgs/gmail.svg"/></a></span> -- feel free to send me an email!
 - - thanks
   - You're Welcome!
 - - linkedin
-  - https://www.linkedin.com/in/brendangferris/ -- Check me out!
+  - <span class="emojicontainer"><a href="https://www.linkedin.com/in/brendangferris/" target="_blank"><img class="emoji" src="static/response_imgs/linkedin.svg"/></a></span> -- Check me out!
 - - very funny
   - hehe i'm full of jokes.
 - - Ok you
@@ -100,3 +98,21 @@ conversations:
   - Thanks!
 - - Ok you
   - Fine thanks!
+- - yea
+  - <span class="emojicontainer"><img class='emoji' src="https://emoji.gg/assets/emoji/2934_sonicthumbsup.png"/></span>
+- - haha
+  - <span class="emojicontainer"><img class='emoji' src="https://emoji.gg/assets/emoji/3721_haha.png"/></span>
+- - hahaha
+  - <span class="emojicontainer"><img class='emoji' src="https://emoji.gg/assets/emoji/3551_haha_laugh_sign_bean.gif"/></span>
+- - yess
+  - glad we're on the same page <span class="emojicontainer"><img class='emoji' src="https://emoji.gg/assets/emoji/1505_yes.gif"/></span>
+- - yup
+  - so what are you up too?
+- - hahahaha
+  - HaHa! I love a good laugh!
+- - ha
+  - LOL
+- - hi
+  - Hello! How are you?
+
+  
