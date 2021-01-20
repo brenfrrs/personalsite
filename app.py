@@ -27,6 +27,17 @@ def get_bot_response():
      userText = request.args.get("msg")
      return str(chatbot.get_response(userText))
 
+@app.route("/blog")
+def blog_page():
+    return render_template("blogs.html")
+
+@app.route("/projects")
+def projects_page():
+    return render_template("projects.html")
+
+@app.route("/datasets")
+def datasets_page():
+    return render_template("datasets.html")
 
 if __name__ == "__main__":
-    app.run()
+    app.run(debug=True)
