@@ -21,12 +21,7 @@ Medium: >>>>> https://brendanfrrs.medium.com/
 -->
 <body>
 <div>
-    <div class="botText">
-        <p><img class="robot_pic" src="static/robotics.svg"/>Hey, I'm [Cyber]Brendan. It's great to meet you! You can ask me all kinds of questions, for a full list of questions/topics that I know, just type "help" below.</p>
-    </div>
-<div id = "chatbox">
-<!-- All the text goes here -->
-</div>
+<h1>Projects</h1>
 </div>
 </body>
 <div class="footer">
@@ -39,34 +34,4 @@ Medium: >>>>> https://brendanfrrs.medium.com/
         </div>
     </div>
 </div>
-<script>
-
-function ScrollToBottom(){
-    window.scrollTo(0,document.body.scrollHeight);
-}
-
-
-function getBotResponse(){
-    var rawText = $("#textInput").val();
-    var userHtml =  '<div class="dynamic"> <p class = "userText"> <img class="robot_pic" src="static/right-arrow.svg"/>' + rawText + '</p> </div>';
-    $("#textInput").val("");
-    $("#chatbox").append(userHtml);
-    $.get("/get", {msg:rawText }).done(function(data) {
-    var botHtml = '<div class="dynamic">' + '<p class ="botText"> <img class="robot_pic" src="static/robotics.svg"/>' + data + '</p> </div>';
-    $("#chatbox").append(botHtml);
-    ScrollToBottom();
-    });
-};
-
-$("#textInput").keypress(function(e) {
-    if(e.which == 13) {
-        getBotResponse();
-        ScrollToBottom();
-    }
-});
-
-// $("#buttonInput").click(function() {
-//     getBotResponse();
-// })
-</script>
 </html>
