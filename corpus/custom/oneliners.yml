@@ -83,7 +83,7 @@ conversations:
 - - linkedin
   - <span class="emojicontainer"><a href="https://www.linkedin.com/in/brendangferris/" target="_blank"><img class="emoji" src="static/response_imgs/linkedin.svg"/></a></span> -- Check me out!
 - - very funny
-  - hehe i'm full of jokes.
+  - hehe i'm full of jokes. <br><br><audio controls autoplay> <source src="static/response_files/lol.wav" type="audio/wav"></audio>
 - - Ok you
   - Good thanks!
 - - Ok and you
@@ -101,17 +101,17 @@ conversations:
 - - yea
   - <span class="emojicontainer"><img class='emoji' src="https://emoji.gg/assets/emoji/2934_sonicthumbsup.png"/></span>
 - - haha
-  - <span class="emojicontainer"><img class='emoji' src="https://emoji.gg/assets/emoji/3721_haha.png"/></span>
+  - <span class="emojicontainer"><img class='emoji' src="https://emoji.gg/assets/emoji/3721_haha.png"/></span> <br><br><audio controls autoplay> <source src="static/response_files/lol.wav" type="audio/wav"></audio>
 - - hahaha
-  - <span class="emojicontainer"><img class='emoji' src="https://emoji.gg/assets/emoji/3551_haha_laugh_sign_bean.gif"/></span>
+  - <span class="emojicontainer"><img class='emoji' src="https://emoji.gg/assets/emoji/3551_haha_laugh_sign_bean.gif"/></span> <br><br><audio controls autoplay> <source src="static/response_files/lol.wav" type="audio/wav"></audio>
 - - yess
   - glad we're on the same page <span class="emojicontainer"><img class='emoji' src="https://emoji.gg/assets/emoji/1505_yes.gif"/></span>
 - - yup
   - so what are you up too?
 - - hahahaha
-  - HaHa! I love a good laugh!
+  - HaHa! I love a good laugh! <br><br><audio controls autoplay> <source src="static/response_files/lol.wav" type="audio/wav"></audio>
 - - ha
-  - LOL
+  - LOL <br><br><audio controls autoplay> <source src="static/response_files/lol.wav" type="audio/wav"></audio>
 - - hi
   - Hello! How are you?
 - - I'm ok
@@ -119,7 +119,7 @@ conversations:
 - - Im ok
   - That's good to hear!
 - - lmao
-  - <img class='large' src="https://media1.tenor.com/images/8778aa09cc5b2930d4f8b036ea6d370e/tenor.gif"/>
+  - <img class='large' src="https://media1.tenor.com/images/8778aa09cc5b2930d4f8b036ea6d370e/tenor.gif"/> <br><br><audio controls autoplay> <source src="static/response_files/lol.wav" type="audio/wav"></audio>
 - - thank you
   - Sure thing!
 - - meh
