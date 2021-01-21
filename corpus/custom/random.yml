@@ -38,6 +38,8 @@ conversations:
   - <span class="emojicontainer"><img class='emoji' src="https://emoji.gg/assets/emoji/2386_BlobSnowball1.gif"/></span>                 <span class="emojicontainer"><img class='emoji' src="https://emoji.gg/assets/emoji/7348_BlobSnowball2.gif"/></span>
 - - fizzbuzz
   - <iframe src="https://trinket.io/embed/python/fb6edc0605?start=result" width="100%" height="600" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen></iframe>
+- - fizz buzz
+  - <iframe src="https://trinket.io/embed/python/fb6edc0605?start=result" width="100%" height="600" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen></iframe>
 - - When is my birthday.
   - I am not yet able to read minds.
 - - What is my birthday.

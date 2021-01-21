@@ -101,7 +101,7 @@ conversations:
 - - yea
   - <span class="emojicontainer"><img class='emoji' src="https://emoji.gg/assets/emoji/2934_sonicthumbsup.png"/></span>
 - - haha
-  - <span class="emojicontainer"><img class='emoji' src="https://emoji.gg/assets/emoji/3721_haha.png"/></span> <br><br><audio controls autoplay> <source src="static/response_files/lol.wav" type="audio/wav"></audio>
+  - <span class="emojicontainer"><img class='emoji' src="https://emoji.gg/assets/emoji/3721_haha.png"/></span> <br><br><audio controls autoplay> <source src="static/response_files/lmao.wav" type="audio/wav"></audio>
 - - hahaha
   - <span class="emojicontainer"><img class='emoji' src="https://emoji.gg/assets/emoji/3551_haha_laugh_sign_bean.gif"/></span> <br><br><audio controls autoplay> <source src="static/response_files/lol.wav" type="audio/wav"></audio>
 - - yess
@@ -119,7 +119,7 @@ conversations:
 - - Im ok
   - That's good to hear!
 - - lmao
-  - <img class='large' src="https://media1.tenor.com/images/8778aa09cc5b2930d4f8b036ea6d370e/tenor.gif"/> <br><br><audio controls autoplay> <source src="static/response_files/lol.wav" type="audio/wav"></audio>
+  - <img class='large' src="https://media1.tenor.com/images/8778aa09cc5b2930d4f8b036ea6d370e/tenor.gif"/> <br><br><audio controls autoplay> <source src="static/response_files/lmao.wav" type="audio/wav"></audio>
 - - thank you
   - Sure thing!
 - - meh
@@ -132,3 +132,9 @@ conversations:
   -   hey, I worked hard on this!
 - - i am bored
   -   hey, I worked hard on this!
+- - lmfao
+  - I'm not sure why you want this, but here it is - <br> <img class='large' src="https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fcdn.popdust.com%2Fwp-content%2Fuploads%2F2011%2F07%2Flmfao_101669652.jpg"/>
+- - dude
+  - sweet.
+- - sweet
+  - dude.
