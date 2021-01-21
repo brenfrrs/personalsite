@@ -14,7 +14,8 @@ trainer.train("corpus.custom.professionalskills",
               "corpus.custom.oneliners",
               "corpus.custom.selfaware",
               "corpus.custom.help",
-              "corpus.custom.random")
+              "corpus.custom.random",
+              "corpus.custom.gettingtoknowyou")
 
 
 
@@ -40,4 +41,4 @@ def datasets_page():
     return render_template("datasets.html")
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run()
