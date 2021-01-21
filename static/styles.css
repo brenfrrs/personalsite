@@ -1,5 +1,8 @@
 @import url('https://fonts.googleapis.com/css?family=Source+Code+Pro');
 
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+/* ^ for large bold code ^ */
+
 html {
     scroll-behavior: smooth;
 }
@@ -144,10 +147,21 @@ img.emoji {
 img.large {
     width: 80%;
     height: auto;
+    padding-left: 10%;
+    padding-right: 10%;
 }
 
 span.emojicontainer {
     height:80%;
     width:100%;
     vertical-align: middle;
+}
+
+.bold_code {
+    font-family: 'Press Start 2P', cursive;
+}
+
+audio {
+    padding-left: 10%;
+    padding-right: 10%
 }
