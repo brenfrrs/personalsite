@@ -28,10 +28,12 @@ conversations:
   - Michigan has the most coastline of any continental US state.
 - - fun fact
   - The reason why it is the 'top 40' is that jukeboxes could fit 40 records, and the owners would use the top 40 list as a way to know which records to buy!
-- - whats a fun fact
+- - whats another fun fact
+  - There are roughly 40 million kangaroos worldwide and there are 8 million people in Ohio so if there was an instance that kangaroos invaded Ohio each individual would have to fight off a minimum of 5 kangaroos.
+- - what is another fun fact
   - There are roughly 40 million kangaroos worldwide and there are 8 million people in Ohio so if there was an instance that kangaroos invaded Ohio each individual would have to fight off a minimum of 5 kangaroos.
 - - cornfusion matrix
-  - <span class="bold_code">CORN REVEALED</span> <span class="emojicontainer"><img class='emoji' src="https://emoji.gg/assets/emoji/8718_corn.png"/></span>
+  - <span class="emojicontainer"><img class='emoji' src="https://emoji.gg/assets/emoji/8718_corn.png"/></span> <span class="bold_code">CORN REVEALED</span> <span class="emojicontainer"><img class='emoji' src="https://emoji.gg/assets/emoji/8718_corn.png"/></span>
 - - show me something
   - <iframe width="560" height="315" src="https://www.youtube.com/embed/6nshvMILgfU" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 - - snowball fight!
@@ -65,7 +67,7 @@ conversations:
 - - Why is the grass green?
   - Like many plants, most species of grass produce a bright pigment called chlorophyll. Chlorophyll absorbs blue light (high energy, short wavelengths) and red light (low energy, longer wavelengths) well, but mostly reflects green light, which accounts for your lawn's color. <a href="https://www.livescience.com/32496-why-is-grass-green.html">-source</a>
 - - winning lottery numbers.
-  - If you figure them out, please let email me <span class="emojicontainer"><a href="mailto:brendanfrrs@gmail.com?subject=I HAVE THE WINNING NUMBERS&body=Brendan, I fugured out the winning lottery numbers, they are [insert winning numbers here]"><img class="emoji" src="static/response_imgs/gmail.svg"/></a></span>
+  - If you figure them out, please let email me <span class="emojicontainer"><a href="mailto:brendan@brendanferris.com?subject=I HAVE THE WINNING NUMBERS&body=Brendan, I fugured out the winning lottery numbers, they are [insert winning numbers here]"><img class="emoji" src="static/response_imgs/gmail.svg"/></a></span>
 - - when will i die.
   - Hopefully not for a long time!
 - - This is getting boring
@@ -95,8 +97,12 @@ conversations:
 - - sing for me
   -   I can sing a little tune for you. <br><br><audio controls autoplay> <source src="static/response_files/retroforest.mp3" type="audio/mpeg"></audio>
 - - can you talk
-  -   Yes but you need to turn on your speakers to hear me. <br><br><audio controls autoplay> <source src="static/response_files/canyouspeak.wav" type="audio/wav"></audio>
+  -   <audio controls autoplay> <source src="static/response_files/canyoutalk.wav" type="audio/wav"></audio>
 - - what should i ask?
   -  you can write `who is your grandfather`, `tell me a joke`, `what do you know`, `can you speak`, `what is your email`, `what is your linkedin`, `what is your biggest fear`, `can you sing`, `why is the grass green`, `what are the winning lottery numbers`, `show me something`, `snowball fight`, `is mercury in retrograde`, `what is your favorite book`, `what makes you laugh`, `what makes you angry`, `If you could go back in time, what year would you travel to?`, `what kind of food do you like`, `do you have a family?`, `were you a cute baby`, `What is your favorite ice cream`, `are you a boy or a girl`, `are you looking for a job`.... these are just some examples of what you could type.
 - - what can i ask you?
   -  you can write `who is your grandfather`, `tell me a joke`, `what do you know`, `can you speak`, `what is your email`, `what is your linkedin`, `what is your biggest fear`, `can you sing`, `why is the grass green`, `what are the winning lottery numbers`, `show me something`, `snowball fight`, `is mercury in retrograde`, `what is your favorite book`, `what makes you laugh`, `what makes you angry`, `If you could go back in time, what year would you travel to?`, `what kind of food do you like`, `do you have a family?`, `were you a cute baby`, `What is your favorite ice cream`, `are you a boy or a girl`, `are you looking for a job`.... these are just some examples of what you could type.
+- - do you cosplay?
+  -  <audio controls autoplay> <source src="static/response_files/hal_cosplay.mp3" type="audio/mpeg"></audio> <br> <img class='large' src="https://media1.tenor.com/images/bc66484c1e4dba3b7602454c3cd5a447/tenor.gif"/>
+- - can you cosplay?
+  -  <audio controls autoplay> <source src="static/response_files/hal_cosplay.mp3" type="audio/mpeg"></audio> <br> <img class='large' src="https://media1.tenor.com/images/bc66484c1e4dba3b7602454c3cd5a447/tenor.gif"/>
