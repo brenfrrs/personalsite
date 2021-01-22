@@ -45,19 +45,19 @@ conversations:
 - - hello
   - Hi! How are you?
 - - good thanks
-  - That's good. You can ask me all kinds of things. If you need help you can also ask me for help.
+  - That's good to hear.
 - - good
-  - That's good. You can ask me all kinds of things. If you need help you can also ask me for help.
+  - That's good.
 - - i'm fine
-  - That's good. You can ask me all kinds of things. If you need help you can also ask me for help.
+  - That's good to hear.
 - - im ok
-  - That's good. You can ask me all kinds of things. If you need help you can also ask me for help.
+  - That's good to hear.
 - - ok
-  - That's good. You can ask me all kinds of things. If you need help you can also ask me for help.
+  - That's good.
 - - i'm good
-  - That's good. You can ask me all kinds of things. If you need help you can also ask me for help.
+  - Your good, i'm good, we're all good!
 - - im good
-  - That's good. You can ask me all kinds of things. If you need help you can also ask me for help.
+  - Your good, i'm good, we're all good!
 - - hey
   - Hi! How are you?
 - - good and you
@@ -112,6 +112,8 @@ conversations:
   - HaHa! I love a good laugh! <br><br><audio controls autoplay> <source src="static/response_files/lol.wav" type="audio/wav"></audio>
 - - ha
   - LOL <br><br><audio controls autoplay> <source src="static/response_files/lol.wav" type="audio/wav"></audio>
+- - hehe
+  - hahaha
 - - hi
   - Hello! How are you?
 - - I'm ok
@@ -127,14 +129,18 @@ conversations:
 - - Pretty good
   -   Thanks, I worked hard on this!
 - - im bored
-  -   hey, I worked hard on this!
+  -   Hey! I worked hard on this! Have you asked me if I can cosplay?
 - - i'm bored
-  -   hey, I worked hard on this!
+  -   Hey! I worked hard on this! Have you asked me if I can cosplay?
 - - i am bored
-  -   hey, I worked hard on this!
+  -   Hey! I worked hard on this! Have you asked me if I can cosplay?
 - - lmfao
   - I'm not sure why you want this, but here it is - <br> <img class='large' src="https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fcdn.popdust.com%2Fwp-content%2Fuploads%2F2011%2F07%2Flmfao_101669652.jpg"/>
 - - dude
   - sweet.
 - - sweet
   - dude.
+- - ls
+  - Nope not a terminal.
+- - clear
+  - Well that didn't work.

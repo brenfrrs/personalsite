@@ -106,3 +106,9 @@ conversations:
   -  <audio controls autoplay> <source src="static/response_files/hal_cosplay.mp3" type="audio/mpeg"></audio> <br> <img class='large' src="https://media1.tenor.com/images/bc66484c1e4dba3b7602454c3cd5a447/tenor.gif"/>
 - - can you cosplay?
   -  <audio controls autoplay> <source src="static/response_files/hal_cosplay.mp3" type="audio/mpeg"></audio> <br> <img class='large' src="https://media1.tenor.com/images/bc66484c1e4dba3b7602454c3cd5a447/tenor.gif"/>
+- - can you speak?
+  -  <audio controls autoplay> <source src="static/response_files/sometimesispeak.wav" type="audio/wav"></audio>
+- - this is really cool
+  -  Thanks, your really cool. Have you asked me if I can cosplay?
+- - this is boring
+  -  <span class="emojicontainer"><img class='emoji' src="https://emoji.gg/assets/emoji/2733_Tobey_Maguire_shocked.gif"/></span>
