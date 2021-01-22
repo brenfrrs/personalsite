@@ -7,7 +7,7 @@ app = Flask(__name__)
 
 
 chatbot = ChatBot('Bren', storage_adapter="chatterbot.storage.SQLStorageAdapter")
-chatbot.storage.drop()
+#chatbot.storage.drop()
 trainer = ChatterBotCorpusTrainer(chatbot)
 
 trainer.train("corpus.custom.professionalskills",
