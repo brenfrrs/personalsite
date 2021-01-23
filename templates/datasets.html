@@ -20,11 +20,69 @@ GitHub: >>>>> https://github.com/brenfrrs
 Medium: >>>>> https://brendanfrrs.medium.com/
 -->
 <body>
-    <div class="page_header">
-        <h1>DATASETS</h1>
-    </div>
+    <table class="downloads_table">
+      <thead>
+        <tr id="col_names">
+          <th id="left_head_corner"><strong>Description</strong></th>
+          <th>Size<sup>*</sup></th>
+          <th>Download</th>
+          <th id="right_head_corner">More Info</th>
+        </tr>
+      </thead>
+       <tr class="header">
+        <td class="test">Apple Product Launch Tweets (2020)</td>
+        <td>730.7mb</td>
+        <td><a href="static/datasets/APPLlaunches.csv.zip" download="APPLlaunches"><img class="download_table_img" src="static/download.svg"></a></td>
+        <td><img class="more_info_img" src="static/info.svg">
+      </td>
+      </tr>
+  <tr class="hidden">
+    <td colspan=2><span class="data_info">1.2 million tweets from 9/1/2020 to 12/1/2020. This was an interesting period of time because Apple had 3 major product launch events: <a href="https://youtu.be/b13xnFp_LJs">Time Flies</a> / <a href="https://youtu.be/KR0g-1hnQPA">Hi, Speed</a> / <a href="https://youtu.be/5AwdkGKmZ0I">One More Thing.</a> All tweets over the previously mentioned period containing the following search terms were collected: <span style="font-style: italic;">"IPhone 12", "Apple Silicon", "M1 Macbook", "New Macbook", "IPhone 12 Pro", "New Apple", "New IPhone", "Silicon"</span>. The data was collected using twint. <br><br> The Features: date, timezone, user_id, (user)name, location, tweet, reply count, retweet count, like count, and search term. <br><br> Link to my project repo using this data can be found - <a href="https://github.com/brenfrrs/twitter_sentiment_analysis">here</a> </span></td>
+    <td><span class="data_info">Source: <br><br> Format: </span></td>
+    <td><span class="data_info">Twitter <br><br> CSV</span></td>
+  </tr>
+
+      <tr class="header">
+        <td class="test">More Data Coming Soon</td>
+        <td>---</td>
+        <td><img class="download_table_img" src="static/download.svg"></td>
+        <td><img class="more_info_img" src="static/info.svg">
+      </td>
+      </tr>
+  <tr class="hidden">
+    <td>--</td>
+    <td></td>
+    <td><span class="data_info">Source: <br><br> Format:</span></td>
+    <td><span class="data_info">- <br><br> -</span></td>
+  </tr>
+
+
+    </table>
+
+
+    <!-- Disclaimer about file sizes -->
+    <p style="font-size:11px; padding-left:6%;">
+        <sup>*</sup>All data will be downloaded as a zip file. Sizes shown are the uncompressed values.
+    </p>
+
+
 </body>
+
 <div class="footer">
     <p id="foot"><a href="/projects" class="footer_links">Projects</a> | <a href="/blog" class="footer_links">Blog</a> | <a href="/datasets" class="footer_links">Datasets</a></p>
 </div>
+
+<script>
+$('.hidden').hide(); /* hide the rows */
+
+
+
+ /* show hidden rows when clicked */
+$('tr.header').click(function(){
+    $(this).nextUntil('tr.header').css('display', function(i,v){
+        return this.style.display === 'table-row' ? 'none' : 'table-row';
+    });
+});
+
+</script>
 </html>
