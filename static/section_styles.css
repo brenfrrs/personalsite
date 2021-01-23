@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Source+Code+Pro');
 
+@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@1,600&display=swap');
 
 html {
     scroll-behavior: smooth;
@@ -51,16 +52,100 @@ white-space: normal;
     color : #6f0be4;
 }
 
-/* ------------------------------------- */
 
-/* ----- header styles -----*/
+/* ----- dataset container styles -----*/
 
-.page_header {
-    text-align: center;
-    background-color:rgb(166, 166, 166);
-    font-size: 30px;
-    color: white;
+.downloads_table {
+  margin-left: 5%;
+  margin-right: 5%;
+  font-family:'Source Code Pro';
+  width: 85%;
+  border-collapse: separate;
+  border-spacing: 0 5px;
+  color: white;
+
+}
+
+.downloads_table th, td {
+  width: 45%;
+  padding-left: 15px;
+  padding-right: 10px;
+  padding-top:5px;
+
+
+}
+
+.download_table_img {
+  height: 55px;
+  width: 55px;
+}
+
+.more_info_img {
+  height: 55px;
+  width: 55px;
 }
 
 
+#left_head_corner {
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+
+#right_head_corner {
+  border-bottom-right-radius: 10px;
+  border-top-right-radius: 10px;
+
+}
+
+
+#col_names {
+  text-align: left;
+  background-color: #d2d1c2;
+  color: black;
+}
+
+.hidden {
+  background-color: #121212;
+  padding-bottom: 10px;
+
+}
+
+.data_info {
+    color:#93ff67;
+    font-family: 'Source Code Pro', monospace;
+
+}
+
+
+img.more_info_img:hover {
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  border-top-right-radius: 10px;
+  box-shadow: 0 0 25px #be63f9;
+  cursor: pointer;
+}
+
+
+img.download_table_img:hover {
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  border-top-right-radius: 10px;
+  box-shadow: 0 0 25px green;
+  cursor: pointer;
+}
+
+/* ----Styles for rounded corners if background color is changed.---- */
+
+td:first-child {
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+}
+td:last-child {
+    border-bottom-right-radius: 15px;
+    border-top-right-radius: 15px;
+}
+
+/* ------------------------------------------------------------------ */
 /* ------------------------------------- */
