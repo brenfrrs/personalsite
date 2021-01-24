@@ -61,7 +61,6 @@ white-space: normal;
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
     word-wrap: break-word;
-  white-space: nowrap;
 }
 
 .downloads_table {
