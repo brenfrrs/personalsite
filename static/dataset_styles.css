@@ -2,6 +2,18 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@1,600&display=swap');
 
+
+
+@media only screen and (min-width: 768px) {
+  .downloads_table {table-layout: fixed;}
+}
+@media only screen and (min-width: 992px) {
+  .downloads_table {table-layout: fixed;}
+}
+@media only screen and (min-width: 1200px) {
+  .downloads_table {table-layout: fixed;}
+}
+
 html {
     scroll-behavior: smooth;
 }
@@ -73,6 +85,7 @@ a {
   border-collapse: separate;
   border-spacing: 0 20px;
   color: #e6e6e6;
+  /* table-layout: fixed; */
 
 }
 
@@ -81,6 +94,7 @@ a {
   padding-left: 15px;
   padding-right: 10px;
   padding-top:5px;
+  text-align: center;
 
 
 }
@@ -95,6 +109,15 @@ a {
   width: 55px;
 }
 
+.filetype_icon {
+    height: 55px;
+    width: 55px;
+}
+
+.is_cleaned {
+    height:41px;
+    width: 28px;
+}
 
 #left_head_corner {
   border-top-left-radius: 10px;
@@ -109,7 +132,7 @@ a {
 
 
 #col_names {
-  text-align: left;
+  text-align: center;
   background-color: #d2d1c2;
   color: black;
 }
@@ -123,6 +146,7 @@ a {
 .data_info {
     color:#93ff67;
     font-family: 'Source Code Pro', monospace;
+    font-size: 16px;
 
 }
 
