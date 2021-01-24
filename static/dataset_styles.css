@@ -3,7 +3,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@1,600&display=swap');
 
 
-
+ /* make table responsive on large and spall screens. */
 @media only screen and (min-width: 768px) {
   .downloads_table {table-layout: fixed;}
 }
@@ -110,7 +110,7 @@ a {
 }
 
 .filetype_icon {
-    height: 55px;
+    height: 48px;
     width: 55px;
 }
 
