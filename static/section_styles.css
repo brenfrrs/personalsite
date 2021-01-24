@@ -4,8 +4,6 @@
 
 html {
     scroll-behavior: smooth;
-    /* margin-top: -21px;
-    margin-left: -10px; */
 }
 
 
@@ -24,6 +22,10 @@ font-family: 'Source Code Pro', monospace;
 font-size: 28px;
 color: rgba(255,255,255,.70);
 white-space: normal;
+}
+
+a {
+    color: #98cad7;
 }
 
 /* ----- footer styles -----*/
@@ -69,8 +71,8 @@ white-space: normal;
   font-family:'Source Code Pro';
   width: 85%;
   border-collapse: separate;
-  border-spacing: 0 5px;
-  color: white;
+  border-spacing: 0 20px;
+  color: #e6e6e6;
 
 }
 
