@@ -36,7 +36,7 @@ color: rgba(255,255,255,.70);
 white-space: normal;
 }
 
-a {
+.light_link {
     color: #98cad7;
 }
 
@@ -55,7 +55,7 @@ a {
     bottom: 0;
     width: 100%;
     background-color: #121212;
-    color: white;
+    /* color: white; */
     text-align: center;
     margin-top: 5%;
     padding-top: 5%;
