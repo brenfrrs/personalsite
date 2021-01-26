@@ -202,9 +202,6 @@ tr:nth-child(even) {
     background-color: #b3b3b3
 }
 
-span#volume_warning {
-    padding-left: 10%;
-}
 
 /* Smartphones (portrait and landscape) ----------- */
 @media only screen
@@ -247,6 +244,8 @@ and (max-device-width : 480px) {
         border-bottom-color: green;
         outline: none;
         caret-color: blue;
+        margin-left: 10%;
+        margin-right: 10%;
 
     }
 
