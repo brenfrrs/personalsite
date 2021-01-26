@@ -84,7 +84,7 @@ input[type="text"] {
 #foot {
     padding-bottom: 4%;
     padding-top: 1%;
-    font-size: 1.2em;
+    font-size: .9em;
     color: #a29ea6;
 }
 
@@ -216,8 +216,36 @@ and (max-device-width : 480px) {
 
     .responses, .robot_pic {
         display: inline;
-        margin-top: -2%;
+        margin-top: -1%;
         /* to center ui icons with text on mobile*/
+    }
+
+    body {
+        padding-bottom: 120px;
+    }
+
+    input[type="text"] {
+        height: 30px;
+        width: 100%;
+        font-size: 20px;
+        background-color: #121212;
+        color: white;
+        border: none;
+        border-bottom-style: solid;
+        border-bottom-width: 2px;
+        border-bottom-color: green;
+        outline: none;
+        caret-color: blue;
+
+    }
+
+
+    img.robot_pic {
+        float:left;
+        height: 35px;
+        width:50px;
+        margin-right: 5px;
+
     }
 
 }
