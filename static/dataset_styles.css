@@ -45,7 +45,7 @@ white-space: normal;
 #foot {
     padding-bottom: 4%;
     padding-top: 1%;
-    font-size: 1.2em;
+    font-size: .9em;
     color: #a29ea6;
 }
 
@@ -187,3 +187,10 @@ td:last-child {
 
 /* ------------------------------------------------------------------ */
 /* ------------------------------------- */
+
+@media only screen
+and (min-width : 1824px) {
+    #foot {
+        font-size: 120%;
+    }
+}

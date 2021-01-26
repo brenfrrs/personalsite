@@ -23,7 +23,7 @@ body {
 #foot {
     padding-bottom: 4%;
     padding-top: 1%;
-    font-size: 1.2em;
+    font-size: .9em;
     color: #a29ea6;
 }
 
@@ -159,4 +159,12 @@ article:hover {
    transform: scale(0.95);
    box-shadow: 0 0 0 0 #121212;
  }
+}
+
+
+@media only screen
+and (min-width : 1824px) {
+    #foot {
+        font-size: 120%;
+    }
 }
