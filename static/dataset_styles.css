@@ -3,12 +3,30 @@
 @import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@1,600&display=swap');
 
 
- /* make table responsive on large and spall screens. */
+ /* make table responsive on large and small screens. */
 @media only screen and (min-width: 768px) {
   .downloads_table {table-layout: fixed;}
+
+  #foot {
+      padding-bottom: 4%;
+      padding-top: 1%;
+      font-size: .9em;
+      color: #a29ea6;
+      margin-bottom: 7%;
+      margin-right: 3%;
+  }
 }
 @media only screen and (min-width: 992px) {
   .downloads_table {table-layout: fixed;}
+
+  #foot {
+      padding-bottom: 4%;
+      padding-top: 1%;
+      font-size: .9em;
+      color: #a29ea6;
+      margin-bottom: 7%;
+      margin-right: 3%;
+  }
 }
 @media only screen and (min-width: 1200px) {
   .downloads_table {table-layout: fixed;}
