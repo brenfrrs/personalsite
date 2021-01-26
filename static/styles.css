@@ -29,7 +29,7 @@ white-space: normal;
 /* ----- css for the text input box -----*/
 
 #inputs {
-    position: fixed;
+    position: sticky;
     bottom: 1%;
     right: 90%;
     left: 10%;
@@ -82,9 +82,9 @@ input[type="text"] {
 }
 
 #foot {
-    padding-bottom: 20px;
-    padding-top: 10px;
-    font-size: 15px;
+    padding-bottom: 4%;
+    padding-top: 1%;
+    font-size: 105%;
     color: #a29ea6;
 }
 
@@ -97,7 +97,6 @@ input[type="text"] {
     /* color: white; */
     text-align: center;
     margin-top: 5%;
-    padding-top: 5%;
 
 }
 

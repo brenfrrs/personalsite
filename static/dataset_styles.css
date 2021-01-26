@@ -43,9 +43,9 @@ white-space: normal;
 /* ----- footer styles -----*/
 
 #foot {
-    padding-bottom: 20px;
-    padding-top: 10px;
-    font-size: 15px;
+    padding-bottom: 4%;
+    padding-top: 1%;
+    font-size: 105%;
     color: #a29ea6;
 }
 
