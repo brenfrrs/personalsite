@@ -1,28 +1,13 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta charset="utf-8">
-  <link rel="icon" href="static/robot1.svg">
-  <link rel="stylesheet" type="text/css" href="static/blog_section_styles.css"/>
-  <title>Brendan Ferris | Blog</title>
-  <script src = "https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-</head>
-<!--
- ___                 _             ___            _
-| _ )_ _ ___ _ _  __| |__ _ _ _   | __|__ _ _ _ _(_)___
-| _ \ '_/ -_) ' \/ _` / _` | ' \  | _/ -_) '_| '_| (_-<
-|___/_| \___|_||_\__,_\__,_|_||_| |_|\___|_| |_| |_/__/
+{% extends "section_base.html" %}
 
-Email: >>>>>> brendan@brendanferris.com
-LinkedIn: >>> https://www.linkedin.com/in/brendangferris/
-GitHub: >>>>> https://github.com/brenfrrs
-Medium: >>>>> https://brendanfrrs.medium.com/
--->
+{% block meta %}
+{% endblock %}
+
+
+
+
+{% block body %}
 <body>
-<!-- <div class="page_header">
-<h1>BLOGS</h1>
-</div> -->
   <div class="main-wrapper">
 
     <div class="article-collection">
@@ -33,10 +18,10 @@ Medium: >>>>> https://brendanfrrs.medium.com/
         </div>
 
         <div class="text-content">
-          <h3>Implementing a face mask detector in OpenCV</h3>
+          <h3 class="article-title">Implementing a face mask detector in OpenCV</h3>
 
 
-          <p>A brief introduction to facial detection with OpenCV.</p>
+          <p class="article-summary">A brief introduction to facial detection with OpenCV.</p>
           <br>
 
 
@@ -51,43 +36,44 @@ Medium: >>>>> https://brendanfrrs.medium.com/
         </div>
 
         <div class="text-content">
-          <h3>Introduction to Sed.</h3>
+          <h3 class="article-title">Introduction to Sed.</h3>
 
 
-          <p>Pattern matching and text manipulation from the terminal.</p>
-          <br><br>
+          <p class="article-summary">Pattern matching and text manipulation from the terminal.</p>
+          <br><br><br><br>
 
 
         </div>
       </article>
       <!-- article end -->
       <!-- article start -->
-      <article>
-        <div class="img-box">
-          <img src="static/blog_imgs/hourglass.jpg" alt="">
-        </div>
+    <article>
+        <a class="card-clickable" href="articles/blog_article.html">
+            <div class="img-box">
+              <img src="static/blog_imgs/hourglass.jpg" alt="">
+            </div>
 
-        <div class="text-content">
-          <h3>Cracking the Zoom Host Code (Theoretically)</h3>
-
-
-          <p>A brief demonstration using Python and PyAutoGUI.</p>
-          <br>
+            <div class="text-content">
+              <h3 class="article-title">Cracking the Zoom Host Code (Theoretically)</h3>
 
 
-        </div>
-      </article>
+              <p class="article-summary">A brief demonstration using Python and PyAutoGUI.</p>
+              <br>
+            </div>
+        </a>
+    </article>
+
       <!-- article end -->
 
       <!-- article start -->
       <article>
-        <a class="card-clickable" href="#">
+        <a class="card-clickable" href="/implementing_a_face_mask_detector_in_opencv">
             <div class="img-box">
               <img src="static/blog_imgs/code_comp.jpeg" alt="">
             </div>
             <div class="text-content">
-              <h3>Scraping Amazon results with Selenium and Python.</h3>
-              <p>Build a scraper to obtain the title, url, price, reviews, and ratings of goods sold on Amazon.</p>
+              <h3 class="article-title">Scraping Amazon results with Selenium and Python.</h3>
+              <p class="article-summary">Build a scraper to obtain the title, url, price, reviews, and ratings of goods sold on Amazon.</p>
             </div>
         </a>
       </article>
@@ -95,7 +81,4 @@ Medium: >>>>> https://brendanfrrs.medium.com/
     </div>
   </div>
 </body>
-<div class="footer">
-    <p id="foot"><a href="/projects" class="footer_links">Projects</a> | <a href="/datasets" class="footer_links">Datasets</a> | <a href="/blog" class="current_pg">Blog</a> | <a href="/" class="footer_links">Chat</a> | <a href="#" class="footer_links">About Me</a> </p>
-</div>
-</html>
+{% endblock %}
