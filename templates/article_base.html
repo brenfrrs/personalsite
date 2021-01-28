@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8">
+  {% block meta %}
+  {% endblock %}
+  <link rel="icon" href="static/robot1.svg">
+  <link rel="stylesheet" type="text/css" href="static/article_template_styles.css"/>
+  <title>{{article_title}}</title>
+  <script src = "https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+<!--
+ ___                 _             ___            _
+| _ )_ _ ___ _ _  __| |__ _ _ _   | __|__ _ _ _ _(_)___
+| _ \ '_/ -_) ' \/ _` / _` | ' \  | _/ -_) '_| '_| (_-<
+|___/_| \___|_||_\__,_\__,_|_||_| |_|\___|_| |_| |_/__/
+
+Email: >>>>>> brendan@brendanferris.com
+LinkedIn: >>> https://www.linkedin.com/in/brendangferris/
+GitHub: >>>>> https://github.com/brenfrrs
+Medium: >>>>> https://brendanfrrs.medium.com/
+-->
+<body>
+{% block body %}
+{% endblock %}
+</body>
+<div class="footer">
+    <p id="foot"><a href="/projects" class="footer_links">Projects</a> | <a href="/datasets" class="footer_links">Datasets</a> | <a href="/blog" class="footer_links">Blog</a> | <a href="/" class="footer_links">Chat</a> | <a href="#" class="footer_links">About</a> </p>
+</div>
+</html>
