@@ -1,13 +1,15 @@
 @import url('https://fonts.googleapis.com/css?family=Source+Code+Pro');
 
-@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@1,600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+/*@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@1,600&display=swap'); */
 
 html {
     scroll-behavior: smooth;
     background: #121212;
     font-family: 'Source Code Pro', sans-serif;
     -webkit-font-smoothing: antialiased;
-    padding: 20px 0;
+    margin-bottom: 20%;
 }
 
 body{
@@ -20,8 +22,8 @@ body{
 
 p {
     overflow: visible;
-    font-family: 'Source Code Pro', monospace;
-    font-size: 28px;
+    font-family: 'Source Code Pro', ital;
+    font-size: 1.8vw;
     color: rgba(255,255,255,.70);
     white-space: normal;
 }
@@ -58,22 +60,55 @@ a {
 
 /* ------------------------------------------------------------ blog articles */
 
-#header_im {
+#header_img {
     width:100%;
     height:auto;
 
 }
 
-.content {
-    height: 100vh;
-    display: flex;
-    justify-content:center;
-    align-items: center;
-    color: white;
+.header_img_container {
+    position: relative;
+
 
 }
 
+.content {
+    height: 100vh;
+    color: white;
+    margin-left: 10%;
+    margin-right: 10%;
 
+}
+
+.content p {
+
+
+
+
+}
+
+#title_text {
+    font-size: 5.3vw;
+    text-align: center;
+    top: 9em;
+    position: absolute;
+    background-color: white;
+    font-family: 'Roboto', sans-serif;
+
+}
+
+.title_overlay {
+    text-align: center;
+    top: 9em;
+    position: absolute;
+    background-color: red;
+}
+
+.subhead::first-letter {
+    initial-letter: 2;
+    font-size: 3vw;
+    line-height: 70px;
+}
 
 
 
@@ -95,6 +130,24 @@ a {
     .footer {
         padding-top: .5%;
     }
+
+    p {
+        overflow: visible;
+        font-family: 'Source Code Pro', ital;
+        font-size: 3.8vw;
+        color: rgba(255,255,255,.70);
+        white-space: normal;
+    }
+
+    .content {
+        height: 100vh;
+        color: white;
+        margin-left: 5%;
+        margin-right: 5%;
+
+    }
+
+
 
 }
 
