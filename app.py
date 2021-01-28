@@ -30,15 +30,19 @@ def get_bot_response():
 
 @app.route("/blog")
 def blog_page():
-    return render_template("blogs.html")
+    return render_template("blogs.html", section_title='Brendan Ferris | Blog')
 
 @app.route("/projects")
 def projects_page():
-    return render_template("projects.html")
+    return render_template("projects.html", section_title='Brendan Ferris | Projects')
 
 @app.route("/datasets")
 def datasets_page():
-    return render_template("datasets.html")
+    return render_template("datasets.html", section_title='Brendan Ferris | Datasets')
+
+@app.route("/implementing_a_face_mask_detector_in_opencv")
+def article1_page():
+    return render_template("face_mask_detector.html", article_title='Brendan Ferris | Implementing a face mask detector in OpenCV.')
 
 if __name__ == "__main__":
     app.run()
