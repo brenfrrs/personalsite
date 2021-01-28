@@ -1,0 +1,343 @@
+@import url('https://fonts.googleapis.com/css?family=Source+Code+Pro');
+
+@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@1,600&display=swap');
+
+html {
+    scroll-behavior: smooth;
+    background: #121212;
+    font-family: 'Source Code Pro', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    padding: 20px 0;
+}
+
+body{
+    margin-bottom: 10%;
+    width: 100%;
+    height: 100%;
+    background-color: #121212;
+    display: inline-block;
+}
+
+p {
+    overflow: visible;
+    font-family: 'Source Code Pro', monospace;
+    font-size: 28px;
+    color: rgba(255,255,255,.70);
+    white-space: normal;
+}
+
+a {
+    color: #98cad7;
+}
+
+/* -------------------------------------------------------- footer styles -----*/
+
+#foot {
+    padding-bottom: 2%;
+    padding-top: 1%;
+    font-size: .9em;
+    color: #a29ea6;
+}
+
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #121212;
+    color: white;
+    text-align: center;
+    margin-top: 1%;
+    padding-top: 1%;
+
+}
+
+.footer_links {
+    color : #6f0be4;
+}
+
+/* ----------------------------------------------- dataset container styles -----*/
+
+.table-responsive {
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    word-wrap: break-word;
+}
+
+.downloads_table {
+  margin-left: 5%;
+  margin-right: 5%;
+  font-family:'Source Code Pro';
+  width: 85%;
+  border-collapse: separate;
+  border-spacing: 0 20px;
+  color: #e6e6e6;
+
+}
+
+.downloads_table th, td {
+  width: 45%;
+  padding-left: 15px;
+  padding-right: 10px;
+  padding-top:5px;
+
+
+}
+
+.download_table_img {
+  height: 55px;
+  width: 55px;
+}
+
+.more_info_img {
+  height: 55px;
+  width: 55px;
+}
+
+.filetype_icon {
+    height: 48px;
+    width: 55px;
+}
+
+.is_cleaned {
+    height:41px;
+    width: 28px;
+}
+
+
+#left_head_corner {
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+
+#right_head_corner {
+  border-bottom-right-radius: 10px;
+  border-top-right-radius: 10px;
+
+}
+
+
+#col_names {
+  text-align: left;
+  background-color: #d2d1c2;
+  color: black;
+}
+
+.hidden {
+  background-color: #121212;
+  padding-bottom: 10px;
+
+}
+
+.data_info {
+    color:#93ff67;
+    font-family: 'Source Code Pro', monospace;
+    font-size: 20px;
+
+}
+
+
+img.more_info_img:hover {
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  border-top-right-radius: 10px;
+  box-shadow: 0 0 25px #be63f9;
+  cursor: pointer;
+}
+
+
+img.download_table_img:hover {
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  border-top-right-radius: 10px;
+  box-shadow: 0 0 25px green;
+  cursor: pointer;
+}
+
+/* --------------------------------------Styles for rounded corners if background color is changed.---- */
+
+td:first-child {
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+}
+td:last-child {
+    border-bottom-right-radius: 15px;
+    border-top-right-radius: 15px;
+}
+
+.light_link {
+    color: #98cad7;
+}
+
+/* ----------------------------------------------------------------Blog section styles.---- */
+
+.main-wrapper{
+    margin: 30px 0;
+}
+
+.main-wrapper > h2{
+    text-align: center;
+    margin: 45px 0 25px 0;
+}
+
+.article-collection{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 96vw;
+    flex-wrap: wrap;
+    margin: 0 auto;
+}
+
+article{
+    flex: 0 0 calc(25% - 30px);
+    margin: 10px;
+    box-shadow: 0px 0px 4px -1px rgba(0, 0, 0, 0.75);
+    top: 0;
+    transition: all .1s ease-in;
+}
+
+article:hover {
+  box-shadow: 0 4px 26px #f0edf5;
+  transform: scale(1.2);
+  animation: pulse 6s infinite;
+  /* animation-direction: alternate; */
+}
+
+.card-clickable {
+    text-decoration: none;
+}
+
+.img-box img{
+    width: 100%;
+    display: block;
+    -webkit-border-top-right-radius: 10px 10px;
+    -webkit-border-top-left-radius: 10px 10px;
+}
+
+.img-box{
+    overflow: hidden;
+}
+
+.text-content{
+    padding: 0 25px;
+    background-color: #dfdfdf78;
+      /* mark of the beast!^^ */
+    color: #d1d1d1;
+    -webkit-border-bottom-right-radius: 10px 10px;
+    -webkit-border-bottom-left-radius: 10px 10px;
+}
+
+/* .text-content h3{
+    padding: 15px 0;
+    background-color: #666666;
+      /* mark of the beast!^^ */
+
+
+.text-content p{
+    padding: 10px 0 25px 0;
+}
+
+.article-title {
+    padding-top: 3%;
+    margin-top: 0px;
+    font-size: 1.6em;
+    font-family: 'Source Code Pro', monospace;
+    white-space: normal;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.article-summary {
+    font-size: 1.3em;
+    font-family: 'Source Code Pro', monospace;
+    margin-bottom: 0%;
+    white-space: normal;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+
+/* ------------------------------------------------------------ blog articles */
+
+#header_im {
+    width:100%;
+    height:auto;
+
+}
+
+.content {
+    height: 100vh;
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    color: white;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+ /*-------------------------------------------------------------- MEDIA QUERIES */
+
+ @media screen and (max-width: 1200px){
+    article{
+        flex: 0 0 calc(50% - 30px);
+    }
+}
+
+@media screen and (max-width: 768px){
+    article{
+        flex: 0 0 100%;
+    }
+
+    .article-collection article:nth-child(even){
+        flex-direction: column;
+    }
+}
+
+/* make table responsive on large and small screens. */
+@media only screen and (min-width: 768px) {
+ .downloads_table {table-layout: fixed;}
+}
+@media only screen and (min-width: 992px) {
+ .downloads_table {table-layout: fixed;}
+}
+@media only screen and (min-width: 1200px) {
+ .downloads_table {table-layout: fixed;}
+}
+
+@media only screen
+and (min-width : 1824px) {
+    #foot {
+        font-size: 120%;
+    }
+}
+
+@keyframes pulse {
+ 0% {
+   transform: scale(0.95);
+   box-shadow: 0 0 0 0 #121212;
+ }
+
+ 70% {
+   transform: scale(1);
+   box-shadow: 0 0 0 10px #121212;
+ }
+
+ 100% {
+   transform: scale(0.95);
+   box-shadow: 0 0 0 0 #121212;
+ }
+}
