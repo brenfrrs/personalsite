@@ -291,7 +291,7 @@ article:hover {
 @media screen and (max-width: 768px){
     article{
         flex: 0 0 100%;
-        margin-right: 6%;
+        margin-right: 7%;
     }
 
     .article-collection article:nth-child(even){
@@ -301,7 +301,7 @@ article:hover {
     .data_info {
         color:#93ff67;
         font-family: 'Source Code Pro', monospace;
-        font-size: .7em;
+        font-size: .5em;
 
     }
 }
