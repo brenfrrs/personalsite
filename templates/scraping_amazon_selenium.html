@@ -1,0 +1,185 @@
+{% extends "article_base.html" %}
+
+{% block body %}
+<body>
+<div class="header_img_container">
+    <img id="header_img" src="static/blog_imgs/code_comp.jpeg" alt="#"></img>
+</div>
+
+<h1 id="title_text"> Scraping Amazon results with Selenium and Python</h1>
+
+<div class="content">
+
+
+<p class="subhead">When I first started web scraping with BeautifulSoup4, I found that the most difficult hoop to jump through was pagination. Getting the elements from a static page seemed fairly straightforward — but what if the data I wanted was not on the initial page I loaded into my script? In this project we will try our hand at pagination using Selenium to cycle through the pages of an Amazon results page, and saving all of the data in a .jsonl file.</p>
+
+<h2 class="subheading">What is Selenium?</h2>
+
+<p><a href="https://github.com/SeleniumHQ/selenium">Selenium</a> is an open-source browser automation tool, mainly used for testing web applications. It’s able to mimic user input such as mouse movements, key presses, and page navigation. There are also many methods which allow for element selection on the page. The main workhorse behind the library is the Webdriver, which makes automation of browser tasks a fairly straightforward affair.</p>
+
+<figure>
+  <img src="https://miro.medium.com/max/3500/1*mrkcvI1ZcsLltSyR4je6OQ@2x.jpeg" alt="Selenium Diagram" style="width:100%">
+  <figcaption><a href="https://www.browserstack.com/guide/selenium-webdriver-tutorial">https://www.browserstack.com/guide/selenium-webdriver-tutorial</a></figcaption>
+</figure>
+
+<h2 class="subheading">Installing the necessary packages.</h2>
+
+<p>For this project, we are going to need to <a href="https://selenium-python.readthedocs.io/installation.html">install</a> Selenium along with a few other packages. Note: for this project I will be using a Mac.</p>
+
+<p>To install Selenium, type the following in your terminal:</p>
+
+<script src="https://gist.github.com/brenfrrs/f0169c34dbd755b74dc723d72618da2a.js"></script>
+
+<p>To manage our webdriver, we will use <a href="https://pypi.org/project/webdriver-manager/">webdriver-manager</a>. You can use Selenium to control most popular web browsers including: Firefox, Internet Explorer, Opera, Safari, and Chrome. I will be using Chrome.</p>
+
+<script src="https://gist.github.com/brenfrrs/8700974880d2cdf3927b48a67f284a8b.js"></script>
+
+<p>Later, we will also need <a href="https://pypi.org/project/selectorlib/">selectorlib</a> for downloading and parsing the html pages we navigate to:</p>
+
+<script src="https://gist.github.com/brenfrrs/93da8ddb3412eca2d3716211a53e18d0.js"></script>
+
+<h2 class="subheading">Setting up our environment.</h2>
+
+<p>Next create a new folder in the desktop, and add some files.</p>
+
+<script src="https://gist.github.com/brenfrrs/95c143cab8d38a0f9e1aa0e4e4fa3d2c.js"></script>
+
+<p>You will also need to place a file named “search_results.yml” into the project directory. This file will be used later to grab the information for each product on the page via their CSS selectors. You can find the file <a href="https://github.com/scrapehero-code/amazon-scraper/blob/master/search_results.yml">here.</a></p>
+
+<p>Then open a code editor and import the following in the amazon_results_scraper.py file:</p>
+
+<script src="https://gist.github.com/brenfrrs/591b618b281db0d6b88f89c5f0a3a69f.js"></script>
+
+<p>Let’s create a function called search_amazon, that take the string for the item we want to search for on Amazon as an input:</p>
+
+<script src="https://gist.github.com/brenfrrs/b215c5b07c4a9350a997b3e4227681bb.js"></script>
+
+<p>Using webdriver-manager we’ll install the correct version of the ChromeDriver:</p>
+
+<script src="https://gist.github.com/brenfrrs/dc0fe958fbe752ff69db0c0cd70347d1.js"></script>
+
+<h2 class="subheading">Loading a page and selecting elements.</h2>
+
+<p>Selenium provides many methods for selecting page elements. We can select elements by: ID, class name, XPath, name, tag name, link text, and CSS Selector. You can also use <a href="https://www.selenium.dev/documentation/en/getting_started_with_webdriver/locating_elements/">relative locators</a> to target page elements relative to other elements. For our purposes, we will be using ID, class name, and <a href="https://www.guru99.com/xpath-selenium.html">XPath</a>. Let’s load the Amazon homepage. Under your driver element, type the following:</p>
+
+<script src="https://gist.github.com/brenfrrs/fd838e0bfad9b00d52b1e489e323958b.js"></script>
+
+<p>Open Chrome and navigate to the Amazon homepage, we need to find the locations of the page elements we want to interact with. For our purposes, we want to:</p>
+
+<ul>
+<li>Input the name of the item(s) we want to search for into the search bar.</li>
+<li>Click the search button.</li>
+<li>Navigate to the results page for the item(s).</li>
+<li>Iterate through the resulting pages.</li>
+</ul>
+
+<p>Right click on the search bar and from the dropdown menu, click inspect. This should take you the browser developer tools. Then click this icon:</p>
+
+<figure>
+  <img src="https://miro.medium.com/max/2450/1*ocKPLjPXqXTL38Ib5qoVPA.png" alt="developer tools" style="width:100%">
+</figure>
+
+<p>Hover over the search bar, then click the search bar to locate the element in the DOM:</p>
+
+<figure>
+  <img src="https://miro.medium.com/max/2450/1*yp5RQddyOPsAekxLuIhlKg.png" alt="selecting search bar" style="width:100%">
+</figure>
+
+<figure>
+  <img src="https://miro.medium.com/max/2450/1*VyHgrpqmUT-JxdGnxNXX0Q.png" alt="inspecting search bar tags" style="width:100%">
+</figure>
+
+<p>The search bar is an ‘input’ element with and id of “twotabssearchtextbox”. We can interact with this item using Selenium by using the find_element_by_id() method, then send text input to it by chaining .send_keys(‘the text we want in the search box’) like so:</p>
+
+<script src="https://gist.github.com/brenfrrs/3cc34754306c88a9cc237b78be42662e.js"></script>
+
+<p>Next, let’s repeat the same steps we took to get the location of the search box, on the magnifying glass search button:</p>
+
+<figure>
+  <img src="https://miro.medium.com/max/2450/1*8KXOWBEyXrmtlOIgGusUfw.png" alt="magnifying glass icon tags" style="width:100%">
+</figure>
+
+<p>In order to click on items with Selenium, we first need to select the item, then chain .click() to the end of the statement:</p>
+
+<script src="https://gist.github.com/brenfrrs/0b742ea92995ca0be48d13f5c0d96a5b.js"></script>
+
+<p>After clicking search, we want to wait for the website to actually load the first page of results or else we will get errors. You could use:</p>
+
+<script src="https://gist.github.com/brenfrrs/54ec7a8a062adb637c4fd9c8030d289f.js"></script>
+
+<p>but selenium has a built in method to tell the driver to wait a specified amount of seconds:</p>
+
+<script src="https://gist.github.com/brenfrrs/431ac1e5d6ce532e9e1b5ab5b1cc46f2.js"></script>
+
+<p>Now for the hard part. We want to find out how many pages of results we get, and iterate through each page. There are many elegant ways to do this, but we will use the quick and dirty solution. We are going to locate the item on the page that displays the number of results, and select it using it’s XPath.</p>
+
+<figure>
+  <img src="https://miro.medium.com/max/2450/1*RUyMht5mYESnf-AlK1k0gw.png" alt="pagination elements" style="width:100%">
+</figure>
+
+<p>As we can see, the number of result pages is displayed in the 6th list element (<textarea readonly><li></textarea> tag) of the list with the class “a-pagination”. For fun, we are going to place two selections in a try/except block: one for the “a-pagination” tag, and if for whatever reason that fails, we will select the element underneath it with the class “a-last”.</p>
+
+<p>When using Selenium, a common error is the NoSuchElementExcemtion, which is thrown when Selenium cannot find an element on a page. This may happen if the element has not loaded yet, or if the position of elements on the page change. We can catch this error and try to select something else if our first option fails if we use a try-except:</p>
+
+<script src="https://gist.github.com/brenfrrs/770fbf8dce1ed90f6676c2f5e756cec3.js"></script>
+
+<p>Now let’s have our driver wait a few seconds:</p>
+
+<script src="https://gist.github.com/brenfrrs/5d20615aa5382a6d747f9bef5b32a245.js"></script>
+
+<p>We selected the element on the page that displays the number of result pages, and now we want to iterate through every page, collecting the current URL to a list that we will later feed to another script. Let’s take num_page, get the text from the element, cast it as an integer, and put it into a for loop:</p>
+
+<script src="https://gist.github.com/brenfrrs/f8f69388520fa45b0f8e25da9fd3f7c7.js"></script>
+
+<p>Then, after we get all of the result page links, tell the driver to quit:</p>
+
+<script src="https://gist.github.com/brenfrrs/911c5b61040008a066df2c1936cc7cac.js"></script>
+
+<p>Remember the ‘search_results_urls.txt’ file we created earlier? We are going to need to open it from the function in ‘write’ mode, then place every URL from url_list into it on a new line:</p>
+
+<script src="https://gist.github.com/brenfrrs/76eeca87bbc479b39addb5a8010e1881.js"></script>
+
+<p>Here is what we should have so far:</p>
+
+<script src="https://gist.github.com/brenfrrs/6e0f28f76d44ad068ba4528b98b081d0.js"></script>
+
+<h2 class="subheading">Integrate an Amazon Search Results Page Scraper into the script.</h2>
+
+<p>Now that we’ve written our function to search for our items and iterate through the results page, now we want to grab and save that data. To do this, we will use an Amazon search results page scraper from <a href="https://github.com/scrapehero-code/amazon-scraper">scrapehero-code.</a></p>
+
+<p>The scrape function will use the URL’s in our text file, to download the HTML, extract relevant information like price, name, and product url. Then place it into the ‘search_results.yml’ file. Underneath your search_amazon() function, place the following:</p>
+
+<script src="https://gist.github.com/brenfrrs/32140fd89fd7ce1d42cfb0dafa39b398.js"></script>
+
+<p>Then call your search_amazon() function with the name of an item you want to search:</p>
+
+<script src="https://gist.github.com/brenfrrs/658b8326eca5bdac8b6307495835b1a7.js"></script>
+
+<p>Lastly, we will place the driver code for the scrape(url) function after we call out search_amazon() function:</p>
+
+<script src="https://gist.github.com/brenfrrs/08a8cadf1508c2cf8e2de28b6d79eea1.js"></script>
+
+<p>Voilà! After running this code your search_results_output.jsonl file will hold the information on all of the items scraped from your search.</p>
+
+<figure>
+  <img src="https://miro.medium.com/max/3500/1*TIsEd_DE4wRzKsGvv1GsYQ.png" alt="JSON output of script" style="width:100%">
+  <figcaption>This is the output.</figcaption>
+</figure>
+
+<p>Here is our completed script:</p>
+
+<script src="https://gist.github.com/brenfrrs/0d0e7c1764cd1c764684c15922da2182.js"></script>
+
+<h2 class="subheading">Limitations.</h2>
+<p>This script works well on broad searches, but will fail on more specific searches with items that return less than 5 pages of results. I will work to improve it in the future.</p>
+
+<h2 class="subheading">Disclaimer.</h2>
+<p>Amazon does not like automated scraping of their website and you should always consult the <a href="https://www.robotstxt.org/robotstxt.html">.robots</a> file when doing any large-scale data collection. This project was educational and done for learning purposes. So if you get blocked, you’ve been warned!</p>
+
+<p>You can check out the Github repository for this project <a href="https://github.com/brenfrrs/selenium_and_pagination">here.</a></p>
+
+
+
+</div>
+</body>
+{% endblock %}
