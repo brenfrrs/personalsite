@@ -44,5 +44,17 @@ def datasets_page():
 def article1_page():
     return render_template("face_mask_detector.html", article_title='Brendan Ferris | Implementing a face mask detector in OpenCV.')
 
+@app.route("/scraping_amazon_results_with_selenium_and_python")
+def article2_page():
+    return render_template("scraping_amazon_selenium.html", article_title='Brendan Ferris | Scraping Amazon results with Selenium and Python')
+
+@app.route("/a_brief_introduction_to_sed")
+def article3_page():
+    return render_template("intro_to_sed.html", article_title='Brendan Ferris | A Brief Introduction to Sed.')
+
+@app.route("/cracking_the_zoom_host_code")
+def article4_page():
+    return render_template("zoom_host_code.html", article_title='Brendan Ferris | Cracking the Zoom Host Code (Theoretically)')
+
 if __name__ == "__main__":
     app.run()
