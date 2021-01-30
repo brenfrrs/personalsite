@@ -141,7 +141,7 @@ conversations:
 - - sweet
   - dude.
 - - ls
-  - Nope not a terminal.
+  - Can't do that, but I can cd into different sections. For example `cd blog` works. You can also type `clear` to clear the conversation and start fresh.
 - - clear
   -  <script>clear_convo()</script>
 - - same
