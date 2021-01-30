@@ -121,12 +121,23 @@ a {
 
 }
 
+figcaption {
+    text-align: center;
+}
+
 
 .subheading {
     font-size: 3vw;
 }
 
+.italic {
+    font-style: italic;
+}
 
+.grayed_out {
+    color: #d5d5d5;
+
+}
 
 
  /*-------------------------------------------------------------- MEDIA QUERIES */
@@ -201,5 +212,10 @@ a {
         font-size: 130%;
         padding-bottom: 1%;
         margin-top: -1.5%;
+    }
+
+    .content {
+        margin-bottom: 10%;
+
     }
 }
