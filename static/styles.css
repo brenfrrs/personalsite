@@ -214,6 +214,7 @@ tr:nth-child(even) {
         margin-bottom: 5%;
         width: max-content;
         margin-right: 2%;
+        padding-left: 2%;
 
     }
 
@@ -253,6 +254,10 @@ tr:nth-child(even) {
         margin-left: .5%;
         margin-right: .5%;
 
+    }
+
+    #inputs {
+        padding-left: 2%;
     }
 
 
