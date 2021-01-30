@@ -253,6 +253,7 @@ tr:nth-child(even) {
         caret-color: blue;
         margin-left: .5%;
         margin-right: .5%;
+        padding-left: 3%;
 
     }
 
