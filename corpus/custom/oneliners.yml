@@ -143,4 +143,14 @@ conversations:
 - - ls
   - Nope not a terminal.
 - - clear
-  - Well that didn't work.
+  -  <script>clear_convo()</script>
+- - same
+  -  No way, really?
+- - cd projects
+  - <script>click_section(0)</script>
+- - cd datasets
+  - <script>click_section(1)</script>
+- - cd blog
+  - <script>click_section(2)</script>
+- - cd about
+  - <script>click_section(4)</script>
