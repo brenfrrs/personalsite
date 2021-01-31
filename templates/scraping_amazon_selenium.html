@@ -44,13 +44,13 @@
 
 <script src="https://gist.github.com/brenfrrs/95c143cab8d38a0f9e1aa0e4e4fa3d2c.js"></script>
 
-<p>You will also need to place a file named “search_results.yml” into the project directory. This file will be used later to grab the information for each product on the page via their CSS selectors. You can find the file <a href="https://github.com/scrapehero-code/amazon-scraper/blob/master/search_results.yml">here.</a></p>
+<p>You will also need to place a file named “<span class="filenames"><em>search_results.yml</em></span>” into the project directory. This file will be used later to grab the information for each product on the page via their CSS selectors. You can find the file <a href="https://github.com/scrapehero-code/amazon-scraper/blob/master/search_results.yml">here.</a></p>
 
-<p>Then open a code editor and import the following in the amazon_results_scraper.py file:</p>
+<p>Then open a code editor and import the following in the <span class="filenames"><em>amazon_results_scraper.py</em></span> file:</p>
 
 <script src="https://gist.github.com/brenfrrs/591b618b281db0d6b88f89c5f0a3a69f.js"></script>
 
-<p>Let’s create a function called search_amazon, that take the string for the item we want to search for on Amazon as an input:</p>
+<p>Let’s create a function called <span class="filenames"><em>search_amazon</em></span>, that take the string for the item we want to search for on Amazon as an input:</p>
 
 <script src="https://gist.github.com/brenfrrs/b215c5b07c4a9350a997b3e4227681bb.js"></script>
 
@@ -89,7 +89,7 @@
   <img src="https://miro.medium.com/max/2450/1*VyHgrpqmUT-JxdGnxNXX0Q.png" alt="inspecting search bar tags" style="width:100%">
 </figure>
 
-<p>The search bar is an ‘input’ element with and id of “twotabssearchtextbox”. We can interact with this item using Selenium by using the find_element_by_id() method, then send text input to it by chaining .send_keys(‘the text we want in the search box’) like so:</p>
+<p>The search bar is an ‘input’ element with and id of “<span class="filenames"><em>twotabssearchtextbox</em></span>”. We can interact with this item using Selenium by using the <span class="filenames"><em>find_element_by_id()</em></span> method, then send text input to it by chaining <span class="filenames"><em>.send_keys(‘the text we want in the search box’)</em></span> like so:</p>
 
 <script src="https://gist.github.com/brenfrrs/3cc34754306c88a9cc237b78be42662e.js"></script>
 
@@ -99,7 +99,7 @@
   <img src="https://miro.medium.com/max/2450/1*8KXOWBEyXrmtlOIgGusUfw.png" alt="magnifying glass icon tags" style="width:100%">
 </figure>
 
-<p>In order to click on items with Selenium, we first need to select the item, then chain .click() to the end of the statement:</p>
+<p>In order to click on items with Selenium, we first need to select the item, then chain <span class="filenames"><em>.click()</em></span> to the end of the statement:</p>
 
 <script src="https://gist.github.com/brenfrrs/0b742ea92995ca0be48d13f5c0d96a5b.js"></script>
 
@@ -117,9 +117,9 @@
   <img src="https://miro.medium.com/max/2450/1*RUyMht5mYESnf-AlK1k0gw.png" alt="pagination elements" style="width:100%">
 </figure>
 
-<p>As we can see, the number of result pages is displayed in the 6th list element (<textarea readonly><li></textarea> tag) of the list with the class “a-pagination”. For fun, we are going to place two selections in a try/except block: one for the “a-pagination” tag, and if for whatever reason that fails, we will select the element underneath it with the class “a-last”.</p>
+<p>As we can see, the number of result pages is displayed in the 6th list element (<textarea readonly><li></textarea> tag) of the list with the class “<span class="filenames"><em>a-pagination</em></span>”. For fun, we are going to place two selections in a try/except block: one for the “<span class="filenames"><em>a-pagination</em></span>” tag, and if for whatever reason that fails, we will select the element underneath it with the class “<span class="filenames"><em>a-last</em></span>”.</p>
 
-<p>When using Selenium, a common error is the NoSuchElementExcemtion, which is thrown when Selenium cannot find an element on a page. This may happen if the element has not loaded yet, or if the position of elements on the page change. We can catch this error and try to select something else if our first option fails if we use a try-except:</p>
+<p>When using Selenium, a common error is the <span class="filenames"><em>NoSuchElementExcemption</em></span>, which is thrown when Selenium cannot find an element on a page. This may happen if the element has not loaded yet, or if the position of elements on the page change. We can catch this error and try to select something else if our first option fails if we use a try-except:</p>
 
 <script src="https://gist.github.com/brenfrrs/770fbf8dce1ed90f6676c2f5e756cec3.js"></script>
 
@@ -135,7 +135,7 @@
 
 <script src="https://gist.github.com/brenfrrs/911c5b61040008a066df2c1936cc7cac.js"></script>
 
-<p>Remember the ‘search_results_urls.txt’ file we created earlier? We are going to need to open it from the function in ‘write’ mode, then place every URL from url_list into it on a new line:</p>
+<p>Remember the ‘<span class="filenames"><em>search_results_urls.txt</em></span>’ file we created earlier? We are going to need to open it from the function in ‘write’ mode, then place every URL from url_list into it on a new line:</p>
 
 <script src="https://gist.github.com/brenfrrs/76eeca87bbc479b39addb5a8010e1881.js"></script>
 
@@ -147,19 +147,19 @@
 
 <p>Now that we’ve written our function to search for our items and iterate through the results page, now we want to grab and save that data. To do this, we will use an Amazon search results page scraper from <a href="https://github.com/scrapehero-code/amazon-scraper">scrapehero-code.</a></p>
 
-<p>The scrape function will use the URL’s in our text file, to download the HTML, extract relevant information like price, name, and product url. Then place it into the ‘search_results.yml’ file. Underneath your search_amazon() function, place the following:</p>
+<p>The scrape function will use the URL’s in our text file, to download the HTML, extract relevant information like price, name, and product url. Then place it into the ‘<span class="filenames"><em>search_results.yml</em></span>’ file. Underneath your <span class="filenames"><em>search_amazon()</em></span> function, place the following:</p>
 
 <script src="https://gist.github.com/brenfrrs/32140fd89fd7ce1d42cfb0dafa39b398.js"></script>
 
-<p>Then call your search_amazon() function with the name of an item you want to search:</p>
+<p>Then call your <span class="filenames"><em>search_amazon()</em></span> function with the name of an item you want to search:</p>
 
 <script src="https://gist.github.com/brenfrrs/658b8326eca5bdac8b6307495835b1a7.js"></script>
 
-<p>Lastly, we will place the driver code for the scrape(url) function after we call out search_amazon() function:</p>
+<p>Lastly, we will place the driver code for the <span class="filenames"><em>scrape(url)</em></span> function after we call out <span class="filenames"><em>search_amazon()</em></span> function:</p>
 
 <script src="https://gist.github.com/brenfrrs/08a8cadf1508c2cf8e2de28b6d79eea1.js"></script>
 
-<p>Voilà! After running this code your search_results_output.jsonl file will hold the information on all of the items scraped from your search.</p>
+<p>Voilà! After running this code your <span class="filenames"><em>search_results_output.jsonl</em></span> file will hold the information on all of the items scraped from your search.</p>
 
 <figure>
   <img src="https://miro.medium.com/max/3500/1*TIsEd_DE4wRzKsGvv1GsYQ.png" alt="JSON output of script" style="width:100%">
