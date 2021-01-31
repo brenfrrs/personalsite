@@ -2,7 +2,7 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
-/*@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@1,600&display=swap'); */
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300&display=swap');
 
 html {
     scroll-behavior: smooth;
@@ -136,6 +136,14 @@ figcaption {
 
 .grayed_out {
     color: #d5d5d5;
+
+}
+
+span.filenames {
+    font-family: 'Fira Code', monospace;
+    color: #4ec75d;
+    background-color: black;
+    font-size: 2vh;
 
 }
 
