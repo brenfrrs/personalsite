@@ -40,6 +40,10 @@ def projects_page():
 def datasets_page():
     return render_template("datasets.html", section_title='Brendan Ferris | Datasets')
 
+@app.route("/about")
+def about_page():
+    return render_template("about.html", section_title='Brendan Ferris | About')
+
 @app.route("/implementing_a_face_mask_detector_in_opencv")
 def article1_page():
     return render_template("face_mask_detector.html", article_title='Brendan Ferris | Implementing a face mask detector in OpenCV.')
