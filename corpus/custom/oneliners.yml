@@ -153,4 +153,4 @@ conversations:
 - - cd blog
   - <script>click_section(2)</script>
 - - cd about
-  - <script>click_section(4)</script>
+  - <script>click_section(3)</script>
