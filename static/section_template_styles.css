@@ -270,15 +270,26 @@ article:hover {
 
 }
 
+/* ------------------------------------------------------------ about page */
 
 
+.headshot_container img {
+    border-radius: 50%;
+    width: 30%;
+    height: auto;
+}
 
+.headshot_container {
+    text-align: center;
+}
 
-
-
-
-
-
+p.about_me_body {
+    color:#cecece;
+    text-align: center;
+    padding-right: 20%;
+    padding-left: 20%;
+    font-size: 2.5vh;
+}
 
  /*-------------------------------------------------------------- MEDIA QUERIES */
 
