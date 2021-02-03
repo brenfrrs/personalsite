@@ -316,6 +316,10 @@ p.about_me_body {
     cursor: pointer;
 }
 
+.about_content {
+    display: flex;
+}
+
  /*-------------------------------------------------------------- MEDIA QUERIES */
 
  @media screen and (max-width: 1200px){
