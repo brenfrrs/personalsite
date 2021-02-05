@@ -271,15 +271,9 @@ article:hover {
 
 /* ------------------------------------------------------------ about page */
 
-
-.headshot_container img {
-    border-radius: 50%;
-    width: 30%;
-    height: auto;
-}
-
 .headshot_container {
     text-align: center;
+    position: relative;
 }
 
 p.about_me_body {
@@ -288,6 +282,7 @@ p.about_me_body {
     padding-right: 20%;
     padding-left: 20%;
     font-size: 2.5vh;
+    overflow: auto;
 }
 
 .clickable_contact_blue, .clickable_contact_orange {
@@ -303,6 +298,13 @@ p.about_me_body {
 
 .contact_icons {
     text-align: center;
+    position: absolute;
+    bottom: 15%;
+    margin-right: auto;
+    margin-left: auto;
+    display: inline-block;
+    width: 100%;
+
 }
 
 .clickable_contact_blue:hover {
@@ -316,7 +318,16 @@ p.about_me_body {
 }
 
 .about_content {
-    display: flex;
+    display: inline-block;
+    position: absolute;
+    bottom: 28%;
+    margin-top: 1%;
+}
+
+.headshot {
+    width:24%;
+    height: auto;
+    border-radius: 50%;
 }
 
 
@@ -365,7 +376,7 @@ p.about_me_body {
 	 padding: 30px;
 	 position: relative;
 	 cursor: pointer;
-	 background-color: #949fb0;
+	 background-color: #2D2D2D;
 	 color: #eceef1;
 	 font-size: 1.5em;
 	 text-transform: uppercase;
@@ -512,7 +523,7 @@ img.projbuttons {
 	background:linear-gradient(to bottom, #2dabf9 5%, #0688fa 100%);
 	background-color:#2dabf9;
 	border-radius:3px;
-	border:1px solid #0b0e07;
+	/* border:1px solid #0b0e07; */
 	display:inline-block;
 	cursor:pointer;
 	color:#ffffff;
@@ -606,11 +617,17 @@ img.projbuttons {
         font-size: 2.5vh;
     }
 
-    .headshot_container img {
-        border-radius: 50%;
-        width: 53%;
+    .contact_icons {
+        bottom: 10%;
+    }
+
+    .headshot {
+        width: 50%;
         height: auto;
-        margin-top: 10%;
+    }
+
+    .about_content {
+        bottom: 23%;
     }
 
 
