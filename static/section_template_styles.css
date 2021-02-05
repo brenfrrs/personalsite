@@ -483,6 +483,68 @@ img.projbuttons {
 
 }
 
+.webappbutton {
+	box-shadow:inset 0px -3px 7px 0px #3dc21b;
+	background:linear-gradient(to bottom, #44c767 5%, #5cbf2a 100%);
+	background-color:#44c767;
+	border-radius:3px;
+	border:1px solid #18ab29;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:15px;
+	padding:9px 23px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #2f6627;
+}
+.webappbutton:hover {
+	background:linear-gradient(to bottom, #5cbf2a 5%, #44c767 100%);
+	background-color:#5cbf2a;
+}
+.webappbutton:active {
+	position:relative;
+	top:1px;
+}
+
+.githubbutton {
+	box-shadow:inset 0px -3px 7px 0px #29bbff;
+	background:linear-gradient(to bottom, #2dabf9 5%, #0688fa 100%);
+	background-color:#2dabf9;
+	border-radius:3px;
+	border:1px solid #0b0e07;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:15px;
+	padding:9px 23px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #263666;
+}
+.githubbutton:hover {
+	background:linear-gradient(to bottom, #0688fa 5%, #2dabf9 100%);
+	background-color:#0688fa;
+}
+.githubbutton:active {
+	position:relative;
+	top:1px;
+}
+
+
+.popoutbuttons {
+    margin-left: 2%;
+    margin-right: 2%;
+    margin-bottom: 2%;
+
+}
+
+.button_icons {
+    height:1em;
+    width:auto;
+    margin-right: .6em;
+    padding-top: .2em;
+}
 
  @media screen and (min-width: 992px) {
 	 .card:nth-of-type(3n+2) .card__expander {
