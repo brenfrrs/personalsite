@@ -135,8 +135,13 @@ a {
 }
 
 tr.header:hover {
-    background-color: #1abc9c9e;
+    background-color: #1abc9c1a;
+    cursor: row-resize;
 
+}
+
+tr.header:active {
+    transform: scale(.98);
 }
 
 
@@ -189,13 +194,12 @@ article{
     margin: 10px;
     box-shadow: 0px 0px 4px -1px rgba(0, 0, 0, 0.75);
     top: 0;
-    transition: all .1s ease-in;
+    transition: all .2s ease-in-out;
 }
 
 article:hover {
-  box-shadow: 0 4px 26px #f0edf5;
-  transform: scale(1.2);
-  animation: pulse 6s infinite;
+  /* box-shadow: 0 4px 26px #f0edf5; */
+  transform: scale(1.05);
   /* animation-direction: alternate; */
 }
 
