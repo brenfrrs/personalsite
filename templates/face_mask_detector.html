@@ -1,105 +1,125 @@
 {% extends "article_base.html" %}
 
 {% block body %}
+
 <body>
-<div class="header_img_container">
-    <img id="header_img" src="static/blog_imgs/mask_emoji.jpg" alt="#"></img>
-</div>
-
-<h1 id="title_text"> Implementing a face mask detector with OpenCV </h1>
-
-<div class="content">
-    <div class="custom_aside">
-        <p>In this article, we are going to implement a pre-trained TensorFlow face mask detection model originally developed by <a href="https://www.mygreatlearning.com/blog/author/hussain/">Hussain Mujtaba</a>. Some of the code and TensorFlow model training information can be found in <a href="https://www.mygreatlearning.com/blog/real-time-face-detection/">his article</a>.</p>
+    <div class="header_img_container">
+        <img id="header_img" src="static/blog_imgs/mask_emoji.jpg" alt="#"></img>
     </div>
 
-<h2 class="subheading">Installing Packages</h2>
+    <h1 id="title_text"> Implementing a face mask detector with OpenCV </h1>
 
-<p>To begin, let’s go through some of the basics of OpenCV.</p>
-<p>First, make a new directory for the project files. Inside of the directory, let’s make a virtual environment to download the necessary packages. If you do not have <a href="https://virtualenv.pypa.io/en/latest/">virtualenv</a> you should run the first line of code, otherwise, skip the first line.</p>
+    <div class="content">
+        <div class="custom_aside">
+            <p>In this article, we are going to implement a pre-trained TensorFlow face mask detection model originally developed by <a href="https://www.mygreatlearning.com/blog/author/hussain/">Hussain Mujtaba</a>. Some of the code and TensorFlow
+                model training information can be found in <a href="https://www.mygreatlearning.com/blog/real-time-face-detection/">his article</a>.</p>
+        </div>
 
-<script src="https://gist.github.com/brenfrrs/6f7f284a4f0c43e4e905784b9d591759.js"></script>
+        <h2 class="subheading">Installing Packages</h2>
 
-<p>Now that our environment is created we can activate it by typing:</p>
+        <p>To begin, let’s go through some of the basics of OpenCV.</p>
+        <p>First, make a new directory for the project files. Inside of the directory, let’s make a virtual environment to download the necessary packages. If you do not have <a href="https://virtualenv.pypa.io/en/latest/">virtualenv</a> you should
+            run the first line of code, otherwise, skip the first line.</p>
 
-<script src="https://gist.github.com/brenfrrs/3676f9909aa8b2228454e0b6030119a1.js"></script>
+        <script src="https://gist.github.com/brenfrrs/6f7f284a4f0c43e4e905784b9d591759.js"></script>
 
-<p>Inside of our virtual environment, lets download the necessary packages:</p>
+        <p>Now that our environment is created we can activate it by typing:</p>
 
-<script src="https://gist.github.com/brenfrrs/966e6b4e8d508f79ee0a61f6f8a22fd0.js"></script>
+        <script src="https://gist.github.com/brenfrrs/3676f9909aa8b2228454e0b6030119a1.js"></script>
 
-<p>Now that we have all of our packages installed, let’s add some files and folders to our directory.</p>
+        <p>Inside of our virtual environment, lets download the necessary packages:</p>
 
-<script src="https://gist.github.com/brenfrrs/be81feae4e257965cf3dae66cd73f4cd.js"></script>
+        <script src="https://gist.github.com/brenfrrs/966e6b4e8d508f79ee0a61f6f8a22fd0.js"></script>
 
-<h2 class="subheading">Haar CascadeClassifiers</h2>
+        <p>Now that we have all of our packages installed, let’s add some files and folders to our directory.</p>
 
-<p>First introduced as an object detection method in 2001 by Paul Viola and Michael Jones in <a href="https://www.cs.cmu.edu/~efros/courses/LBMV07/Papers/viola-cvpr-01.pdf">this paper</a>, the Viola Jones Algorithm is one of the most efficient and computationally inexpensive facial recognition algorithms. Despite being almost 20 years old, it is still widely used. In fact, if you have ever used a digital camera that drew bounding boxes around faces in the viewfinder, chances are it was utilizing this algorithm.</p>
+        <script src="https://gist.github.com/brenfrrs/be81feae4e257965cf3dae66cd73f4cd.js"></script>
 
+        <h2 class="subheading">Haar CascadeClassifiers</h2>
 
-<p>The algorithm is trained on thousands of positive (with a face) and negative images (without a face), and uses <a href="https://en.wikipedia.org/wiki/Haar_wavelet">Haar Features</a> to calculate the difference between different regions of an image. These calculations are made by subtracting pixel values from different regions within a specified area.</p>
-
-<p>Let’s say we have an image. In order to reduce computation time we convert that image to grayscale:</p>
-
-<figure>
-  <img src="https://miro.medium.com/max/1400/1*Gfgkn-LkY6ncN5nwM04CaQ.png" alt="Obama" style="width:100%">
-  <figcaption>Souza, P., photographer. (2012) Official portrait of President Barack Obama in Oval Office / Official White House photo by Pete Souza. , 2012. Dec. 6. [Photograph] Retrieved from the Library of Congress, https://www.loc.gov/item/2017645540/.</figcaption>
-</figure>
-
-<p>Let’s look at how our computer is ‘seeing’ the corner of Obama’s mouth:</p>
-
-<figure>
-  <img src="https://miro.medium.com/max/1400/1*Wr2Jyyu_A8jFwp3nfQNItw.png" alt="Pixel values the computer uses." style="width:100%">
-  <figcaption>pixel values ranging from 0(black) to 255(white)</figcaption>
-</figure>
-
-<figure>
-  <img src="https://miro.medium.com/max/1400/1*ByLQpVwXrC_8IUKGuVxZ0g.png" style="width:100%">
-</figure>
-
-<p>Adding and subtracting all of these regions would be too computationally expensive to do in real time, and in order to solve this problem the concept of <a href="https://computersciencesource.wordpress.com/2010/09/03/computer-vision-the-integral-image/">integral images was introduced.</a> Each pixel in an integral image is calculated by adding all pixels up and to the left of a specific point in the original image. The integral image can the be used to quickly calculate the specific areas of the input image, as opposed to having to make repeated sweeps over all pixels every pass over the image.</p>
-
-<figure>
-  <img src="https://miro.medium.com/max/1400/1*YVYtcIkyDdN46Ysa4E7Qwg.png" style="width:100%">
-</figure>
-
-<p>In order to make detections, the each feature is tested against and input image. In the beginning, the decision thresholds for the features a low, meaning that some faces will be detected, and some other things will be detected as well. A typical Haar classifier will have around 6,000 features, and as goes further and further through the features, it gets more and more picky. So it may let noise through when checking the first 10 features, but if the 11th feature rejects the image, then the classifier also rejects the image. This allows the algorithm to be fast and efficient.</p>
-
-<h2 class="subheading">Implementing a face mask detector.</h2>
-
-<p>To see this in action we are going to implement a face mask detector on a public IP camera stream. These are older security/surveillance cameras hooked up to the internet either without passwords, or without changing the default passwords on devices with known security issues. You can implement computer vision on some of these streams, because they transfer data in the form of a <a href="https://fileinfo.com/extension/mjpg">.mjpg</a>, which can be loaded into OpenCV with the following method:</p>
-
-<script src="https://gist.github.com/brenfrrs/8caf6e211fe5f549551cc58ffcaeb9a1.js"></script>
-
-<p><a href="#">Here</a> is the stream we are going to use. It appears to be a doorbell camera facing towards the street. We are going to write some functions that place screenshots from this video feed into the folders with_mask and without_mask. When our program detects a person, it will take a screenshot and place the resulting screenshot.jpg in the proper folder. It will also compile a .csv with the relevant classification, time, prediction confidence (of the TensorFlow mask detection model), and file path to the image of the observation.</p>
-
-<p>In your ‘models’ folder, you will need two things: the <a href="https://github.com/opencv/opencv/tree/master/data/haarcascades">Haar Classifier</a> (which is an XML document that you then load into OpenCV), and the trained TensorFlow model, which can be found <a href="https://www.mygreatlearning.com/blog/real-time-face-detection/">here.</a></p>
-
-<script src="https://gist.github.com/brenfrrs/bffa94cefad1201fbd7b38bb6c913d7a.js"></script>
-
-<p>We will then add an infinite while loop, that will repeatedly grab the images from the .mjpg stream, and search for faces with the Haar Cascade Classifier. If the Haar Cascade matches a face, the pre-trained TensorFlow model will predict whether the person is or isn’t wearing a mask, and the cycle repeats.</p>
-
-<script src="https://gist.github.com/brenfrrs/ba55ae9870ea5058f0995c3f15b96d73.js"></script>
-
-<h2 class="subheading">Current Performance.</h2>
-
-<p>If you run the code from this article, you will see that it does an ok job of properly classifying people with and without masks. But, the model often captures random areas of the screen as either ‘mask’ or ‘no mask’ predictions, leading to a high number of false observations.</p>
-
-<p>This is because the default Haar Cascade we are using was trained for frontal face positions. There are other trained classifiers, including haarcascade_profileface.xml, which may offer marginal improvements on performance. Note: the <a href="https://github.com/opencv/opencv/blob/master/data/haarcascades/haarcascade_profileface.xml">profileface.xml</a> classifier linked above was trained on left-side profiles.</p>
-
-<figure>
-  <img src="https://miro.medium.com/max/1400/1*BHcnQKxmpPEShBrzCM_ggA.png" style="width:100%">
-</figure>
+        <p>First introduced as an object detection method in 2001 by Paul Viola and Michael Jones in <a href="https://www.cs.cmu.edu/~efros/courses/LBMV07/Papers/viola-cvpr-01.pdf">this paper</a>, the Viola Jones Algorithm is one of the most
+            efficient and computationally inexpensive facial recognition algorithms. Despite being almost 20 years old, it is still widely used. In fact, if you have ever used a digital camera that drew bounding boxes around faces in the viewfinder,
+            chances are it was utilizing this algorithm.</p>
 
 
-<h2 class="subheading">Next Steps.</h2>
+        <p>The algorithm is trained on thousands of positive (with a face) and negative images (without a face), and uses <a href="https://en.wikipedia.org/wiki/Haar_wavelet">Haar Features</a> to calculate the difference between different regions of
+            an image. These calculations are made by subtracting pixel values from different regions within a specified area.</p>
 
-<p>To improve classification performance, it would be interesting to <a href="https://docs.opencv.org/3.4/dc/d88/tutorial_traincascade.html">train a custom Haar Classifier</a> to detect some combination of profile and frontal facial positions. Stay tuned!</p>
+        <p>Let’s say we have an image. In order to reduce computation time we convert that image to grayscale:</p>
 
-<p>The Github repo can be found <a href="https://github.com/brenfrrs/face_mask_detection">here.</a></p>
+        <figure>
+            <img src="https://miro.medium.com/max/1400/1*Gfgkn-LkY6ncN5nwM04CaQ.png" alt="Obama" style="width:100%">
+            <figcaption>Souza, P., photographer. (2012) Official portrait of President Barack Obama in Oval Office / Official White House photo by Pete Souza. , 2012. Dec. 6. [Photograph] Retrieved from the Library of Congress,
+                https://www.loc.gov/item/2017645540/.</figcaption>
+        </figure>
+
+        <p>Let’s look at how our computer is ‘seeing’ the corner of Obama’s mouth:</p>
+
+        <figure>
+            <img src="https://miro.medium.com/max/1400/1*Wr2Jyyu_A8jFwp3nfQNItw.png" alt="Pixel values the computer uses." style="width:100%">
+            <figcaption>pixel values ranging from 0(black) to 255(white)</figcaption>
+        </figure>
+
+        <figure>
+            <img src="https://miro.medium.com/max/1400/1*ByLQpVwXrC_8IUKGuVxZ0g.png" style="width:100%">
+        </figure>
+
+        <p>Adding and subtracting all of these regions would be too computationally expensive to do in real time, and in order to solve this problem the concept of <a
+                href="https://computersciencesource.wordpress.com/2010/09/03/computer-vision-the-integral-image/">integral images was introduced.</a> Each pixel in an integral image is calculated by adding all pixels up and to the left of a specific
+            point in the original image. The integral image can the be used to quickly calculate the specific areas of the input image, as opposed to having to make repeated sweeps over all pixels every pass over the image.</p>
+
+        <figure>
+            <img src="https://miro.medium.com/max/1400/1*YVYtcIkyDdN46Ysa4E7Qwg.png" style="width:100%">
+        </figure>
+
+        <p>In order to make detections, the each feature is tested against and input image. In the beginning, the decision thresholds for the features a low, meaning that some faces will be detected, and some other things will be detected as well. A
+            typical Haar classifier will have around 6,000 features, and as goes further and further through the features, it gets more and more picky. So it may let noise through when checking the first 10 features, but if the 11th feature rejects
+            the image, then the classifier also rejects the image. This allows the algorithm to be fast and efficient.</p>
+
+        <h2 class="subheading">Implementing a face mask detector.</h2>
+
+        <p>To see this in action we are going to implement a face mask detector on a public IP camera stream. These are older security/surveillance cameras hooked up to the internet either without passwords, or without changing the default passwords
+            on devices with known security issues. You can implement computer vision on some of these streams, because they transfer data in the form of a <a href="https://fileinfo.com/extension/mjpg">.mjpg</a>, which can be loaded into OpenCV with
+            the following method:</p>
+
+        <script src="https://gist.github.com/brenfrrs/8caf6e211fe5f549551cc58ffcaeb9a1.js"></script>
+
+        <p><a href="#">Here</a> is the stream we are going to use. It appears to be a doorbell camera facing towards the street. We are going to write some functions that place screenshots from this video feed into the folders with_mask and
+            without_mask. When our program detects a person, it will take a screenshot and place the resulting screenshot.jpg in the proper folder. It will also compile a .csv with the relevant classification, time, prediction confidence (of the
+            TensorFlow mask detection model), and file path to the image of the observation.</p>
+
+        <p>In your ‘models’ folder, you will need two things: the <a href="https://github.com/opencv/opencv/tree/master/data/haarcascades">Haar Classifier</a> (which is an XML document that you then load into OpenCV), and the trained TensorFlow
+            model, which can be found <a href="https://www.mygreatlearning.com/blog/real-time-face-detection/">here.</a></p>
+
+        <script src="https://gist.github.com/brenfrrs/bffa94cefad1201fbd7b38bb6c913d7a.js"></script>
+
+        <p>We will then add an infinite while loop, that will repeatedly grab the images from the .mjpg stream, and search for faces with the Haar Cascade Classifier. If the Haar Cascade matches a face, the pre-trained TensorFlow model will predict
+            whether the person is or isn’t wearing a mask, and the cycle repeats.</p>
+
+        <script src="https://gist.github.com/brenfrrs/ba55ae9870ea5058f0995c3f15b96d73.js"></script>
+
+        <h2 class="subheading">Current Performance.</h2>
+
+        <p>If you run the code from this article, you will see that it does an ok job of properly classifying people with and without masks. But, the model often captures random areas of the screen as either ‘mask’ or ‘no mask’ predictions, leading
+            to a high number of false observations.</p>
+
+        <p>This is because the default Haar Cascade we are using was trained for frontal face positions. There are other trained classifiers, including haarcascade_profileface.xml, which may offer marginal improvements on performance. Note: the <a
+                href="https://github.com/opencv/opencv/blob/master/data/haarcascades/haarcascade_profileface.xml">profileface.xml</a> classifier linked above was trained on left-side profiles.</p>
+
+        <figure>
+            <img src="https://miro.medium.com/max/1400/1*BHcnQKxmpPEShBrzCM_ggA.png" style="width:100%">
+        </figure>
+
+
+        <h2 class="subheading">Next Steps.</h2>
+
+        <p>To improve classification performance, it would be interesting to <a href="https://docs.opencv.org/3.4/dc/d88/tutorial_traincascade.html">train a custom Haar Classifier</a> to detect some combination of profile and frontal facial
+            positions. Stay tuned!</p>
+
+        <p>The Github repo can be found <a href="https://github.com/brenfrrs/face_mask_detection">here.</a></p>
 
 
 
-</div>
+    </div>
 </body>
 {% endblock %}

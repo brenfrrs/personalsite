@@ -1,134 +1,152 @@
 {% extends "article_base.html" %}
 
 {% block body %}
+
 <body>
-<div class="header_img_container">
-    <img id="header_img" src="static/blog_imgs/code_display.jpg" alt="#"></img>
-</div>
+    <div class="header_img_container">
+        <img id="header_img" src="static/blog_imgs/code_display.jpg" alt="#"></img>
+    </div>
 
-<h1 id="title_text">A Brief Introduction to Sed.</h1>
+    <h1 id="title_text">A Brief Introduction to Sed.</h1>
 
-<div class="content">
-
-
-<p class="subhead"><a href="https://en.wikipedia.org/wiki/Sed">Sed</a> is an early UNIX program meant to function as a non-interactive ‘stream editor’. It is one of the earliest programs to support the use of regular expressions for pattern matching, and has remained a popular for editing and filtering streams of text from the command line. In this article, I’m going to go through some of the basics, and provide some examples of what can be accomplished with basic sed programs.</p>
-
-<p>There are many different <a href="https://www.linuxtopia.org/online_books/linux_tool_guides/the_sed_faq/sedfaq2_001.html">versions</a> of sed, with the most common being the <a href="https://en.wikipedia.org/wiki/Berkeley_Software_Distribution">BSD</a> and <a href="https://en.wikipedia.org/wiki/GNU">GNU</a> flavors. The BSD version is used by MacOS, while the GNU version comes installed on Linux machines. They are similar… yet different. Sed commands written for the BSD version will not work on the GNU version. You can find a summary of the differences between the two versions <a href="https://riptutorial.com/sed/topic/9436/bsd-macos-sed-vs--gnu-sed-vs--the-posix-sed-specification#:~:text=BSD%20sed%20%3A%20always%20appends%20a,input%20line%20ended%20in%20one.">here.</a> For this article, I will be using a MacBook.</p>
-
-<h2 class="subheading">Making changes to a file.</h2>
-
-<p>Let’s first get a <a href="https://poets.org/poem/clouds">poem</a>, and put it into a poem.txt file. From your terminal, type the following:</p>
-
-<script src="https://gist.github.com/brenfrrs/5fdc1d7a92edc513b7f626e9bec41305.js"></script>
-
-<p>You should see something like:</p>
-
-<figure>
-  <img src="https://miro.medium.com/max/2450/1*XPzxjDaTeaUQaJkHpZTzFw.png" alt="sed output" style="width:100%">
-</figure>
-
-<p>The last line of the poem and the prompt both print out on the same line. We can fix this with our first sed command.</p>
-
-<script src="https://gist.github.com/brenfrrs/da6f4f4b25878e1ce440404cfaa42546.js"></script>
-
-<figure>
-  <img src="https://miro.medium.com/max/2450/1*ZklhgCjFkSsNODIi8hgBRA.png" alt="sed output" style="width:100%">
-</figure>
-
-<p>Perfect, we inserted a newline at the end of the file and now it looks a little neater. Now try printing the poem again. What do you notice?</p>
-
-<figure>
-  <img src="https://miro.medium.com/max/2450/1*ErWhqHp0M3y6xAR1gywgbg.png" alt="sed output" style="width:100%">
-</figure>
-
-<p>It went back to the way it was before! This is because by default sed only outputs changes to <a href="https://www.computerhope.com/jargon/s/stdout.htm#:~:text=Stdout%2C%20also%20known%20as%20standard,defaults%20to%20the%20user's%20screen.">stdout</a>, it does not modify the original file. However, you we can add an argument: -i ‘’ in order to make the changes permanently. Those quotation marks are important, they are needed for the Mac (BSD) version of sed, but throw an error on the GNU version. So if we type:</p>
-
-<script src="https://gist.github.com/brenfrrs/c19a6a5986144e04d34f4df13dbe9f5b.js"></script>
-
-<figure>
-  <img src="https://miro.medium.com/max/2450/1*DlasC4na-bPrhDqDCX6Q5Q.png" alt="sed output" style="width:100%">
-</figure>
-
-<p>The changes we make will be permanent.</p>
-
-<div class="custom_aside"><p>Be careful using sed to make permanent changes to files, you could very easily make a lot of irreversible changes and ruin a lot of files if you are not careful. Always test your commands first and make sure they are doing what you expect.</p></div>
-
-<p>In the above expression,</p>
-
-<script src="https://gist.github.com/brenfrrs/5595374207b79b7ae201a0cea25718a9.js"></script>
-
-<h2 class="subheading">Substitutions.</h2>
-
-<p>One of the most popular uses of sed is for substituting patterns. Let’s take our poem file and make some simple substitutions.</p>
-
-<script src="https://gist.github.com/brenfrrs/0c6639d4bdb4e89000962ea78e1233fd.js"></script>
-
-<figure>
-  <img src="https://miro.medium.com/max/2450/1*gSH5sptv2TRPqUtHcXRjgg.png" alt="sed output" style="width:100%">
-</figure>
-
-<p>We start the program by calling sed, then within the quotes, s stands for substitution, followed by the word we want to substitute, and what we want to substitute it with. The slashes are known as delimiters, they separate the pattern we want to find and the pattern we want to replace. Let’s try another one.
-</p>
-
-<script src="https://gist.github.com/brenfrrs/7637b4da358bb72e472faf3989b23f85.js"></script>
-
-<figure>
-  <img src="https://miro.medium.com/max/2450/1*lwf_Il6J0m7-6ypqE-MdNw.png" alt="sed output" style="width:100%">
-</figure>
-
-<p>Something happened. Our substitution was made on the first occurrence of sheep (turning it into COW), but not on the second. As stated before, sed is a ‘stream editor’, meaning that it operates line-by-line, makes changes to the first match that it finds on a line, then <span class="italic">skips all other matches</span> and continues to the next line. We can change this by adding g — short for global — to the end of our pattern. Let’s also make these changes to our original file, because we want white cows not white sheep!</p>
-
-<script src="https://gist.github.com/brenfrrs/004e9feb31aa129c3f20487432a5fbbf.js"></script>
+    <div class="content">
 
 
-<p>When changing the file in place, your command will not return anything. So you need to reopen your file to see any changes:</p>
+        <p class="subhead"><a href="https://en.wikipedia.org/wiki/Sed">Sed</a> is an early UNIX program meant to function as a non-interactive ‘stream editor’. It is one of the earliest programs to support the use of regular expressions for pattern
+            matching, and has remained a popular for editing and filtering streams of text from the command line. In this article, I’m going to go through some of the basics, and provide some examples of what can be accomplished with basic sed
+            programs.</p>
 
-<script src="https://gist.github.com/brenfrrs/69291d2cf5275f9e693d98d5eff16c38.js"></script>
+        <p>There are many different <a href="https://www.linuxtopia.org/online_books/linux_tool_guides/the_sed_faq/sedfaq2_001.html">versions</a> of sed, with the most common being the <a
+                href="https://en.wikipedia.org/wiki/Berkeley_Software_Distribution">BSD</a> and <a href="https://en.wikipedia.org/wiki/GNU">GNU</a> flavors. The BSD version is used by MacOS, while the GNU version comes installed on Linux machines.
+            They are similar… yet different. Sed commands written for the BSD version will not work on the GNU version. You can find a summary of the differences between the two versions <a
+                href="https://riptutorial.com/sed/topic/9436/bsd-macos-sed-vs--gnu-sed-vs--the-posix-sed-specification#:~:text=BSD%20sed%20%3A%20always%20appends%20a,input%20line%20ended%20in%20one.">here.</a> For this article, I will be using a
+            MacBook.</p>
 
-<p>The above command is simplified. We could replace sheep with <a href="https://regexone.com/">regular expressions</a> for more complicated pattern matching.</p>
+        <h2 class="subheading">Making changes to a file.</h2>
 
-<h2 class="subheading">Modifying spreadsheets.</h2>
+        <p>Let’s first get a <a href="https://poets.org/poem/clouds">poem</a>, and put it into a poem.txt file. From your terminal, type the following:</p>
 
-<p>Sed can also be used to modify spreadsheets, although, there are usually other methods that are better suited for spreadsheet manipulation. To demonstrate how you might make some basic changes to a spreadsheet, let’s load some up!</p>
+        <script src="https://gist.github.com/brenfrrs/5fdc1d7a92edc513b7f626e9bec41305.js"></script>
 
-<p>Supposed we have two files called op1.csv, and op2.csv:</p>
+        <p>You should see something like:</p>
+
+        <figure>
+            <img src="https://miro.medium.com/max/2450/1*XPzxjDaTeaUQaJkHpZTzFw.png" alt="sed output" style="width:100%">
+        </figure>
+
+        <p>The last line of the poem and the prompt both print out on the same line. We can fix this with our first sed command.</p>
+
+        <script src="https://gist.github.com/brenfrrs/da6f4f4b25878e1ce440404cfaa42546.js"></script>
+
+        <figure>
+            <img src="https://miro.medium.com/max/2450/1*ZklhgCjFkSsNODIi8hgBRA.png" alt="sed output" style="width:100%">
+        </figure>
+
+        <p>Perfect, we inserted a newline at the end of the file and now it looks a little neater. Now try printing the poem again. What do you notice?</p>
+
+        <figure>
+            <img src="https://miro.medium.com/max/2450/1*ErWhqHp0M3y6xAR1gywgbg.png" alt="sed output" style="width:100%">
+        </figure>
+
+        <p>It went back to the way it was before! This is because by default sed only outputs changes to <a
+                href="https://www.computerhope.com/jargon/s/stdout.htm#:~:text=Stdout%2C%20also%20known%20as%20standard,defaults%20to%20the%20user's%20screen.">stdout</a>, it does not modify the original file. However, you we can add an argument: -i
+            ‘’ in order to make the changes permanently. Those quotation marks are important, they are needed for the Mac (BSD) version of sed, but throw an error on the GNU version. So if we type:</p>
+
+        <script src="https://gist.github.com/brenfrrs/c19a6a5986144e04d34f4df13dbe9f5b.js"></script>
+
+        <figure>
+            <img src="https://miro.medium.com/max/2450/1*DlasC4na-bPrhDqDCX6Q5Q.png" alt="sed output" style="width:100%">
+        </figure>
+
+        <p>The changes we make will be permanent.</p>
+
+        <div class="custom_aside">
+            <p>Be careful using sed to make permanent changes to files, you could very easily make a lot of irreversible changes and ruin a lot of files if you are not careful. Always test your commands first and make sure they are doing what you
+                expect.</p>
+        </div>
+
+        <p>In the above expression,</p>
+
+        <script src="https://gist.github.com/brenfrrs/5595374207b79b7ae201a0cea25718a9.js"></script>
+
+        <h2 class="subheading">Substitutions.</h2>
+
+        <p>One of the most popular uses of sed is for substituting patterns. Let’s take our poem file and make some simple substitutions.</p>
+
+        <script src="https://gist.github.com/brenfrrs/0c6639d4bdb4e89000962ea78e1233fd.js"></script>
+
+        <figure>
+            <img src="https://miro.medium.com/max/2450/1*gSH5sptv2TRPqUtHcXRjgg.png" alt="sed output" style="width:100%">
+        </figure>
+
+        <p>We start the program by calling sed, then within the quotes, s stands for substitution, followed by the word we want to substitute, and what we want to substitute it with. The slashes are known as delimiters, they separate the pattern we
+            want to find and the pattern we want to replace. Let’s try another one.
+        </p>
+
+        <script src="https://gist.github.com/brenfrrs/7637b4da358bb72e472faf3989b23f85.js"></script>
+
+        <figure>
+            <img src="https://miro.medium.com/max/2450/1*lwf_Il6J0m7-6ypqE-MdNw.png" alt="sed output" style="width:100%">
+        </figure>
+
+        <p>Something happened. Our substitution was made on the first occurrence of sheep (turning it into COW), but not on the second. As stated before, sed is a ‘stream editor’, meaning that it operates line-by-line, makes changes to the first
+            match that it finds on a line, then <span class="italic">skips all other matches</span> and continues to the next line. We can change this by adding g — short for global — to the end of our pattern. Let’s also make these changes to our
+            original file, because we want white cows not white sheep!</p>
+
+        <script src="https://gist.github.com/brenfrrs/004e9feb31aa129c3f20487432a5fbbf.js"></script>
 
 
-<figure>
-  <img src="https://miro.medium.com/max/8400/1*xVsg0_bbzdemTWAkGPek4g.png" alt="WWII Operations" style="width:100%">
-</figure>
+        <p>When changing the file in place, your command will not return anything. So you need to reopen your file to see any changes:</p>
 
-<p>We want to change the header lines of op1.csv from ‘Target Country’ and ‘Target City’, to ‘COUNTRY’ and ‘CITY’. Then, we want to combine both spreadsheets into a new, combined file called op3.csv. We can achieve this with the following:</p>
+        <script src="https://gist.github.com/brenfrrs/69291d2cf5275f9e693d98d5eff16c38.js"></script>
 
-<script src="https://gist.github.com/brenfrrs/33f9b3713d9d1cac2c19e2ece3809142.js"></script>
+        <p>The above command is simplified. We could replace sheep with <a href="https://regexone.com/">regular expressions</a> for more complicated pattern matching.</p>
 
+        <h2 class="subheading">Modifying spreadsheets.</h2>
 
-<figure>
-  <img src="https://miro.medium.com/max/8400/1*Jn2PpW5SkNYTb7l-pwf6Aw.png" alt="WWII Operations" style="width:100%">
-</figure>
+        <p>Sed can also be used to modify spreadsheets, although, there are usually other methods that are better suited for spreadsheet manipulation. To demonstrate how you might make some basic changes to a spreadsheet, let’s load some up!</p>
 
-<script src="https://gist.github.com/brenfrrs/a53d3aa4fa2354c289c4d5c98ed427ed.js"></script>
-
-<p>In the above pattern we created a new document with new headers, and appended two .csv files, all in one line of code!</p>
-
-<p>This article barely scratches the surface of what can be done with sed, you can find a more in depth overview of the capabilities of sed <a href="https://www.grymoire.com/Unix/Sed.html#uh-13">here.</a> As I mentioned before, there are two versions of sed. If you have a Mac you can download and use the Linux (GNU) version with this command:</p>
-
-<script src="https://gist.github.com/brenfrrs/8096be154bc76cfacd4eff3b39f7bfb6.js"></script>
-
-<p>The first option will allow you to retain both version, so you would be able to call <span class="italic">sed</span>, or <span class="italic">gsed</span> depending on the version you would want to use. The second option will just replace sed with the GNU version so you do not need the <span class="italic">g</span>.</p>
-
-<script src="https://gist.github.com/brenfrrs/4ae90e20882803efae3849787ffd7b2a.js"></script>
-
-<figure>
-  <img src="https://miro.medium.com/max/2450/1*sWVA6Js2hmkYr52kU3gHRA.png" alt="WWII Operations" style="width:100%">
-</figure>
+        <p>Supposed we have two files called op1.csv, and op2.csv:</p>
 
 
-<p>Notice that when invoking <span class="italic">gsed</span> we no longer needed the ‘’ after -i, and the <span class="italic">/gi</span> makes a global case insensitive match.</p>
+        <figure>
+            <img src="https://miro.medium.com/max/8400/1*xVsg0_bbzdemTWAkGPek4g.png" alt="WWII Operations" style="width:100%">
+        </figure>
 
-<p><span class="grayed_out">Nuff’ sed.</span></p>
+        <p>We want to change the header lines of op1.csv from ‘Target Country’ and ‘Target City’, to ‘COUNTRY’ and ‘CITY’. Then, we want to combine both spreadsheets into a new, combined file called op3.csv. We can achieve this with the following:
+        </p>
+
+        <script src="https://gist.github.com/brenfrrs/33f9b3713d9d1cac2c19e2ece3809142.js"></script>
 
 
-</div>
+        <figure>
+            <img src="https://miro.medium.com/max/8400/1*Jn2PpW5SkNYTb7l-pwf6Aw.png" alt="WWII Operations" style="width:100%">
+        </figure>
+
+        <script src="https://gist.github.com/brenfrrs/a53d3aa4fa2354c289c4d5c98ed427ed.js"></script>
+
+        <p>In the above pattern we created a new document with new headers, and appended two .csv files, all in one line of code!</p>
+
+        <p>This article barely scratches the surface of what can be done with sed, you can find a more in depth overview of the capabilities of sed <a href="https://www.grymoire.com/Unix/Sed.html#uh-13">here.</a> As I mentioned before, there are two
+            versions of sed. If you have a Mac you can download and use the Linux (GNU) version with this command:</p>
+
+        <script src="https://gist.github.com/brenfrrs/8096be154bc76cfacd4eff3b39f7bfb6.js"></script>
+
+        <p>The first option will allow you to retain both version, so you would be able to call <span class="italic">sed</span>, or <span class="italic">gsed</span> depending on the version you would want to use. The second option will just replace
+            sed with the GNU version so you do not need the <span class="italic">g</span>.</p>
+
+        <script src="https://gist.github.com/brenfrrs/4ae90e20882803efae3849787ffd7b2a.js"></script>
+
+        <figure>
+            <img src="https://miro.medium.com/max/2450/1*sWVA6Js2hmkYr52kU3gHRA.png" alt="WWII Operations" style="width:100%">
+        </figure>
+
+
+        <p>Notice that when invoking <span class="italic">gsed</span> we no longer needed the ‘’ after -i, and the <span class="italic">/gi</span> makes a global case insensitive match.</p>
+
+        <p><span class="grayed_out">Nuff’ sed.</span></p>
+
+
+    </div>
 </body>
 {% endblock %}

@@ -1,80 +1,95 @@
 {% extends "section_base.html" %}
 
 {% block body %}
+
 <body>
-<div class="table-responsive">
-    <table class="downloads_table">
-      <thead>
-        <tr id="col_names">
-          <th id="left_head_corner"><strong>Description</strong></th>
-          <th>Size<sup>*</sup></th>
-          <th>Source(s)</th>
-          <th>Format</th>
-          <th>Cleaned?</th>
-          <th id="right_head_corner">Download</th>
-        </tr>
-      </thead>
-       <tr class="header">
-        <td class="test">Apple Product Launch Tweets (2020)</td>
-        <td>250.4mb</td>
-        <td><img class="filetype_icon" src="static/datasets/UI/twitter.svg"></a></td>
-        <td><img class="filetype_icon" src="static/datasets/UI/csv2.svg"></a></td>
-        <td><img class="is_cleaned" src="static/datasets/UI/cross.svg"></a></td>
-        <td><a href="static/datasets/APPLlaunches.csv.zip" download="APPLlaunches.csv.zip"><img class="download_table_img" src="static/datasets/UI/download.svg"></a></td>
-      </tr>
-  <tr class="hidden">
-    <td colspan=7><p class="data_info">1.2 million tweets from 9/1/2020 to 12/1/2020. This was an interesting period of time because Apple had 3 major product launch events: <a class="light_link" href="https://youtu.be/b13xnFp_LJs">Time Flies</a> / <a class="light_link" href="https://youtu.be/KR0g-1hnQPA">Hi, Speed</a> / <a class="light_link" href="https://youtu.be/5AwdkGKmZ0I">One More Thing.</a> All tweets over the previously mentioned period containing the following search terms were collected: <span style="font-style: italic;">"IPhone 12", "Apple Silicon", "M1 Macbook", "New Macbook", "IPhone 12 Pro", "New Apple", "New IPhone", "Silicon"</span>. The data was collected using twint. <p class="data_info"> Features: date, timezone, user_id, (user)name, location, tweet, reply count, retweet count, like count, and search term. </p> <p class="data_info"> Link to my project repo using this data can be found - <a href="https://github.com/brenfrrs/twitter_sentiment_analysis">here</a> </p></p></td>
-  </tr>
+    <div class="table-responsive">
+        <table class="downloads_table">
+            <thead>
+                <tr id="col_names">
+                    <th id="left_head_corner"><strong>Description</strong></th>
+                    <th>Size<sup>*</sup></th>
+                    <th>Source(s)</th>
+                    <th>Format</th>
+                    <th>Cleaned?</th>
+                    <th id="right_head_corner">Download</th>
+                </tr>
+            </thead>
+            <tr class="header">
+                <td class="test">Apple Product Launch Tweets (2020)</td>
+                <td>250.4mb</td>
+                <td><img class="filetype_icon" src="static/datasets/UI/twitter.svg"></a></td>
+                <td><img class="filetype_icon" src="static/datasets/UI/csv2.svg"></a></td>
+                <td><img class="is_cleaned" src="static/datasets/UI/cross.svg"></a></td>
+                <td><a href="static/datasets/APPLlaunches.csv.zip" download="APPLlaunches.csv.zip"><img class="download_table_img" src="static/datasets/UI/download.svg"></a></td>
+            </tr>
+            <tr class="hidden">
+                <td colspan=7>
+                    <p class="data_info">1.2 million tweets from 9/1/2020 to 12/1/2020. This was an interesting period of time because Apple had 3 major product launch events: <a class="light_link" href="https://youtu.be/b13xnFp_LJs">Time Flies</a> /
+                        <a class="light_link" href="https://youtu.be/KR0g-1hnQPA">Hi, Speed</a> / <a class="light_link" href="https://youtu.be/5AwdkGKmZ0I">One More Thing.</a> All tweets over the previously mentioned period containing the following
+                        search terms were collected: <span style="font-style: italic;">"IPhone 12", "Apple Silicon", "M1 Macbook", "New Macbook", "IPhone 12 Pro", "New Apple", "New IPhone", "Silicon"</span>. The data was collected using twint.
+                    <p class="data_info"> Features: date, timezone, user_id, (user)name, location, tweet, reply count, retweet count, like count, and search term. </p>
+                    <p class="data_info"> Link to my project repo using this data can be found - <a href="https://github.com/brenfrrs/twitter_sentiment_analysis">here</a> </p>
+                    </p>
+                </td>
+            </tr>
 
-  <tr class="header">
-   <td class="test">Assorted stock related news. (2015-2020)</td>
-   <td>1.36gb</td>
-   <td>Various</td>
-   <td><img class="filetype_icon" src="static/datasets/UI/csv2.svg"></td>
-   <td><img class="is_cleaned" src="static/datasets/UI/cross.svg"></td>
-   <td><a href="static/datasets/stock_news.zip" download="stock_news.zip"><img class="download_table_img" src="static/datasets/UI/download.svg"></a></td>
- </tr>
-<tr class="hidden">
-<td colspan=7><p class="data_info">Hundreds of thousands of news articles published between 2015-2020 for: Facebook, Goldman Sachs, Google, IBM, McDonalds, Merck, Netflix, Nike, and Walmart.</p> <p class="data_info">Features: date, (news)source, author, fulltext, and title. </p></td>
-</tr>
-
-
-
-<tr class="header">
- <td class="test">Google Pixel 5 Launch Tweets (2020)</td>
- <td>90.3mb</td>
- <td><img class="filetype_icon" src="static/datasets/UI/twitter.svg"></td>
- <td><img class="filetype_icon" src="static/datasets/UI/csv2.svg"></td>
- <td><img class="is_cleaned" src="static/datasets/UI/cross.svg"></td>
- <td><a href="static/datasets/google_pixel_2020.zip" download="google_pixel_2020.zip"><img class="download_table_img" src="static/datasets/UI/download.svg"></a></td>
-</tr>
-<tr class="hidden">
-<td colspan=7><p class="data_info">Tweets from 9/1/2020 to 12/1/2020. This was an interesting period of time because Google released the Pixel 5. All tweets over the previously mentioned period containing the following search terms were collected: <span style="font-style: italic;">"Google Pixel 5", "New Pixel" and "Pixel 5"</span>. The data was collected using twint. <p class="data_info"> Features include: date, timezone, user_id, (user)name, location, tweet, reply count, retweet count, like count, links, hashtags, photos, url's, time, mentions, and place.</p></td>
-</tr>
+            <tr class="header">
+                <td class="test">Assorted stock related news. (2015-2020)</td>
+                <td>1.36gb</td>
+                <td>Various</td>
+                <td><img class="filetype_icon" src="static/datasets/UI/csv2.svg"></td>
+                <td><img class="is_cleaned" src="static/datasets/UI/cross.svg"></td>
+                <td><a href="static/datasets/stock_news.zip" download="stock_news.zip"><img class="download_table_img" src="static/datasets/UI/download.svg"></a></td>
+            </tr>
+            <tr class="hidden">
+                <td colspan=7>
+                    <p class="data_info">Hundreds of thousands of news articles published between 2015-2020 for: Facebook, Goldman Sachs, Google, IBM, McDonalds, Merck, Netflix, Nike, and Walmart.</p>
+                    <p class="data_info">Features: date, (news)source, author, fulltext, and title. </p>
+                </td>
+            </tr>
 
 
 
+            <tr class="header">
+                <td class="test">Google Pixel 5 Launch Tweets (2020)</td>
+                <td>90.3mb</td>
+                <td><img class="filetype_icon" src="static/datasets/UI/twitter.svg"></td>
+                <td><img class="filetype_icon" src="static/datasets/UI/csv2.svg"></td>
+                <td><img class="is_cleaned" src="static/datasets/UI/cross.svg"></td>
+                <td><a href="static/datasets/google_pixel_2020.zip" download="google_pixel_2020.zip"><img class="download_table_img" src="static/datasets/UI/download.svg"></a></td>
+            </tr>
+            <tr class="hidden">
+                <td colspan=7>
+                    <p class="data_info">Tweets from 9/1/2020 to 12/1/2020. This was an interesting period of time because Google released the Pixel 5. All tweets over the previously mentioned period containing the following search terms were
+                        collected: <span style="font-style: italic;">"Google Pixel 5", "New Pixel" and "Pixel 5"</span>. The data was collected using twint.
+                    <p class="data_info"> Features include: date, timezone, user_id, (user)name, location, tweet, reply count, retweet count, like count, links, hashtags, photos, url's, time, mentions, and place.</p>
+                </td>
+            </tr>
 
 
-      <tr class="header">
-        <td class="test">More Data Coming Soon</td>
-        <td>---</td>
-        <td><img class="filetype_icon" src="static/datasets/UI/placeholder_file.svg"></td>
-        <td><img class="filetype_icon" src="static/datasets/UI/placeholder_file.svg"></td>
-        <td><img class="is_cleaned" src="static/datasets/UI/check.svg"></a></td>
-        <td><img class="download_table_img" src="static/datasets/UI/download.svg"></td>
-      </tr>
-  <tr class="hidden">
-    <td>--</td>
-    <td></td>
-    <td><span class="data_info">Source: <br><br> Format:</span></td>
-    <td><span class="data_info">- <br><br> -</span></td>
-  </tr>
 
 
-    </table>
 
-</div>
+            <tr class="header">
+                <td class="test">More Data Coming Soon</td>
+                <td>---</td>
+                <td><img class="filetype_icon" src="static/datasets/UI/placeholder_file.svg"></td>
+                <td><img class="filetype_icon" src="static/datasets/UI/placeholder_file.svg"></td>
+                <td><img class="is_cleaned" src="static/datasets/UI/check.svg"></a></td>
+                <td><img class="download_table_img" src="static/datasets/UI/download.svg"></td>
+            </tr>
+            <tr class="hidden">
+                <td>--</td>
+                <td></td>
+                <td><span class="data_info">Source: <br><br> Format:</span></td>
+                <td><span class="data_info">- <br><br> -</span></td>
+            </tr>
+
+
+        </table>
+
+    </div>
     <!-- Disclaimer about file sizes -->
     <p style="font-size:11px; padding-left:6%;">
         <sup>*</sup>All data will be downloaded as a zip file. Sizes shown are the uncompressed values.
@@ -83,16 +98,15 @@
 
 </body>
 <script>
-$('.hidden').hide(); /* hide the rows */
+    $('.hidden').hide(); /* hide the rows */
 
 
 
- /* show hidden rows when clicked */
-$('tr.header').click(function(){
-    $(this).nextUntil('tr.header').css('display', function(i,v){
-        return this.style.display === 'table-row' ? 'none' : 'table-row';
+    /* show hidden rows when clicked */
+    $('tr.header').click(function() {
+        $(this).nextUntil('tr.header').css('display', function(i, v) {
+            return this.style.display === 'table-row' ? 'none' : 'table-row';
+        });
     });
-});
-
 </script>
 {% endblock %}

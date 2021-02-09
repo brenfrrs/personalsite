@@ -1,124 +1,143 @@
 {% extends "article_base.html" %}
 
 {% block body %}
+
 <body>
-<div class="header_img_container">
-    <img id="header_img" src="static/blog_imgs/hourglass.jpg" alt="#"></img>
-</div>
+    <div class="header_img_container">
+        <img id="header_img" src="static/blog_imgs/hourglass.jpg" alt="#"></img>
+    </div>
 
-<h1 id="title_text">Cracking the Zoom Host Code (Theoretically)</h1>
+    <h1 id="title_text">Cracking the Zoom Host Code (Theoretically)</h1>
 
-<div class="content">
-
-
-<p class="subhead">In the late-2000’s, I spent more time than I care to admit playing Halo online. During this time I was exposed to (but did not participate in) the small but unavoidable <a href="https://www.halopedia.org/Modding">modding community</a> within the game. People who had found ways to cheat, or alter the game to either win or sometimes just to implement fun new features. One of the techniques used was <a href="https://www.neoseeker.com/forums/26846/t1207955-ip-flooding/">“Standby” cheating</a>, which was when software was used to block the internet connections of the players on the opposing team, send large amounts of information to their connections, and force them to drop out of the game. If you were playing a 4v4 matchmaking game 3 of your teammates could be dropped from the game and the opposing team would just wait around to either kill you or run the clock for the win.</p>
-
-<p>What does this have to do with Zoom? In order for “Standby” cheating to work, you would needed to be the “host” of the game. In Halo, host was usually given to whichever player had the fastest internet connection, and if you were able to slow down all other player connections, you could force yourself to become host. When I first started using Zoom, I saw the “claim host” button and was taken back to the times spent playing Halo. After all, Zoom is basically just a visual version of the game lobby — sans <a href="https://www.youtube.com/watch?v=JFPpevO9Jhs">profanity</a> (nsfw). In this article we are going to crack the Zoom host code, in a way that is functional but not practical.</p>
-
-<div class="custom_aside">
-    <p><em>Note: The following code is inefficient and may crash when run, especially when generating 8–10 digit numbers. Please be cautious if copying and pasting code, you can also use the <a href="https://github.com/brenfrrs/zoom_host_key_solver">command line version of this script</a>., which has some built-in safeguards to prevent unwanted behavior.</em></p>
-</div>
-
-<h2 class="subheading">Requirements</h2>
-
-<p>First, we will need to download and import <a href="https://pypi.org/project/pyperclip/">pyperclip</a>, <a href="https://pyautogui.readthedocs.io/en/latest/">pyautogui</a>, and <a href="https://pypi.org/project/pynput/">pynput</a>. Pyperclip will be used to save each host key we generate to our clipboard, and pyautogui will allow out program to interact with the Zoom user interface. I will be using a Mac connected to a 4K monitor for this project (this will be important to consider later, as pyautogui uses screenshots to locate items on the screen). Pynput will be used to click the input box bordered in blue seen in the below screenshot.</p>
-
-<script src="https://gist.github.com/brenfrrs/6619df3f60ee9b68381b7149f11d1ac2.js"></script>
+    <div class="content">
 
 
-<h2 class="subheading">Analyzing the problem.</h2>
+        <p class="subhead">In the late-2000’s, I spent more time than I care to admit playing Halo online. During this time I was exposed to (but did not participate in) the small but unavoidable <a href="https://www.halopedia.org/Modding">modding
+                community</a> within the game. People who had found ways to cheat, or alter the game to either win or sometimes just to implement fun new features. One of the techniques used was <a
+                href="https://www.neoseeker.com/forums/26846/t1207955-ip-flooding/">“Standby” cheating</a>, which was when software was used to block the internet connections of the players on the opposing team, send large amounts of information to
+            their connections, and force them to drop out of the game. If you were playing a 4v4 matchmaking game 3 of your teammates could be dropped from the game and the opposing team would just wait around to either kill you or run the clock for
+            the win.</p>
 
-<p>How do we know what the Zoom host code might be? Well, they tell us:</p>
+        <p>What does this have to do with Zoom? In order for “Standby” cheating to work, you would needed to be the “host” of the game. In Halo, host was usually given to whichever player had the fastest internet connection, and if you were able to
+            slow down all other player connections, you could force yourself to become host. When I first started using Zoom, I saw the “claim host” button and was taken back to the times spent playing Halo. After all, Zoom is basically just a visual
+            version of the game lobby — sans <a href="https://www.youtube.com/watch?v=JFPpevO9Jhs">profanity</a> (nsfw). In this article we are going to crack the Zoom host code, in a way that is functional but not practical.</p>
 
-<figure>
-  <img src="https://miro.medium.com/max/1925/1*ou3yNk1z_DFKCSrGF67olA.png" alt="zoom code" style="width:100%">
-</figure>
+        <div class="custom_aside">
+            <p><em>Note: The following code is inefficient and may crash when run, especially when generating 8–10 digit numbers. Please be cautious if copying and pasting code, you can also use the <a
+                        href="https://github.com/brenfrrs/zoom_host_key_solver">command line version of this script</a>., which has some built-in safeguards to prevent unwanted behavior.</em></p>
+        </div>
 
-<p>Part of my interest in this code is that it presents itself as a real-world version of a word problem that you may see on a test. What we want to find are all possible 6 digit, 7 digit, 8 digit, 9 digit, and 10 digit numbers. Because order matters, we are looking for all permutations of 6–10 digit numbers with repetition. We can find the number of possible codes with the following formula: <em>n<sup>r</sup></em>, where n is the number of possible digit values for each ‘space’ in the key (0–9), and r is the number of digits in the key (r=10 for a 10 digit code). For a 10 digit code, we would have 10 billion possible numbers (10¹⁰).</p>
+        <h2 class="subheading">Requirements</h2>
 
-<figure>
-  <img src="https://miro.medium.com/max/2450/1*oXYwUWs8q8dWiwxQzlZ7qQ.png" alt="complexity" style="width:100%; background-color:rgba(249, 242, 236, 0.62)">
-</figure>
+        <p>First, we will need to download and import <a href="https://pypi.org/project/pyperclip/">pyperclip</a>, <a href="https://pyautogui.readthedocs.io/en/latest/">pyautogui</a>, and <a href="https://pypi.org/project/pynput/">pynput</a>.
+            Pyperclip will be used to save each host key we generate to our clipboard, and pyautogui will allow out program to interact with the Zoom user interface. I will be using a Mac connected to a 4K monitor for this project (this will be
+            important to consider later, as pyautogui uses screenshots to locate items on the screen). Pynput will be used to click the input box bordered in blue seen in the below screenshot.</p>
 
-<p>We’ve figured out how many possible host keys there will be, but how do we find each possible host key? We use the cartesian product.</p>
-
-<p>In python we can use itertools.product() to generate all of the possible host keys for a given digit length (6 digit code, 7 digit code etc.).</p>
-
-<script src="https://gist.github.com/brenfrrs/c5e42fcc3b3813b05905787ee7e49d89.js"></script>
-
-<p>Above, we have a function that:</p>
-<ul>
-<li>Generates all of the possible n digit codes.</li>
-<li>Casts the resulting numbers as a list of lists of digits.</li>
-<li>Appending each resulting code to the master_key list.</li>
-<li>Turn the master_key list into an iterable, this way we can call next() to receive the next code in the list.</li>
-</ul>
-
-<h2 class="subheading">Interacting with Zoom via pyautogui/pyperclip.</h2>
-
-<p>Now that we can generate lists of all possible codes (more on this later), we need to interact with the Zoom interface in order to input those codes. For this we will use pyperclip, which allows us to save a list element as a string to the clipboard, and pyautogui which allows us to search for and interact with elements on the screen.</p>
-
-<script src="https://gist.github.com/brenfrrs/0fe5786882b8499dfa140efc072f2802.js"></script>
-
-<p>By passing the file path of a screenshot of a visual element on the screen, <a href="https://pyautogui.readthedocs.io/en/latest/screenshot.html">locateOnScreen()</a> will search the screen and return the coordinates of the item if it is found. We can then use <a href="https://pyautogui.readthedocs.io/en/latest/mouse.html#mouse-clicks">click(x,y)</a> to click on the screen position. Because I am using a 4K display, I need to cut the resolution in half by multiplying each coordinate by .5.</p>
-
-<p>In the above code, we perform the following tasks:</p>
-
-<ol>
-<li>Locate the ‘Claim Host’ button.</li>
-<li>Finding the coordinates of the center of the button on the screen.</li>
-<li>Clicking the button.</li>
-</ol>
-
-<figure>
-  <img src="https://miro.medium.com/max/539/1*hM0BaomuztV7I5BRyv4FWA.png" alt="claim_host_button" style="width:30%">
-</figure>
-
-<p>After the ‘Claim Host’ button is clicked the following input box appears center screen:</p>
-
-<figure>
-  <img src="https://miro.medium.com/max/2450/1*QemUXo2mjPvXG-Jt7ir6MA.png" alt="claim_host_button" style="width:100%">
-</figure>
-
-<p>Lastly, after a number is entered, a blue ‘Claim Host’ button appears next to the input box:</p>
-
-<figure>
-  <img src="https://miro.medium.com/max/2268/1*LGaNREG5KFwBDQ0RJx1g9g.png" alt="claim_host_button" style="width:100%">
-</figure>
-
-<p>We can automate the host key input by placing out mouse and keyboard movements at the appropriate position within script. We will break the tasks of copying/pasting/clicking into functions, then at the end of the script call the functions in the order we need them to execute. Then we are going to call that driver function at the end of the script recursively, so it will run until either the programs crashes or the master_key generator is consumed. We will use Pyperclip to copy each key from the master_key list to the clipboard, at each loop iteration. Let’s look at the code.</p>
-
-<script src="https://gist.github.com/brenfrrs/e4bc29d65b920416ee78a3a3af45d21a.js"></script>
-
-<h2 class="subheading">Performance</h2>
-
-<figure>
-  <img src="https://miro.medium.com/max/2100/1*y1kJbzp6tGRFMOz754FSiA.gif" alt="claim_host_button" style="width:100%">
-</figure>
-
-<p>As we can see from the above gif, this code works — but not well. We can look at a rough estimate of how long each loop takes to complete.</p>
-
-<figure>
-  <img src="https://miro.medium.com/max/2450/1*LfXvVdhNLBLIkpbpdYTOGQ.png" alt="execution_times" style="width:100%">
-</figure>
-
-<p>After 100 iterations of the loop, it took our driver function and average of 2.6690 seconds to complete the necessary processes. Using a 2016 Macbook Pro with 2.7 GHz Quad-Core Intel Core i7 processor it will take on average:</p>
-
-<ul>
-<li>4.413 weeks to crack, if we needed the last 6 digit host code.</li>
-<li>44.130 weeks to crack, , if we needed the last 7 digit host code.</li>
-<li>8.463 years to crack, if we needed the last 8 digit host code.</li>
-<li>84.663 years to crack, if we needed the last 9 digit code.</li>
-<li>If we were unlucky, and the key we needed was the last 10 digit number in the master key list, 9999999999, it would take approximately 846.334 years to obtain the correct host code.</li>
-</ul>
-
-<p>Good Luck!</p>
-
-<h2 class="subheading">Next Steps.</h2>
-
-<p>In the future, it would be interesting to revisit this project, dig deep into the nitty gritty of the operations taking place within the script, and see how performance could be improved. I should also make the necessary changes to deal with a correct guess, so in 800 years maybe i’ll receive a nice ‘success’ message. Check my <a href="https://github.com/brenfrrs/zoom_host_key_solver">github repository</a> to see if I was able to make any progress, or share suggestions below!</p>
+        <script src="https://gist.github.com/brenfrrs/6619df3f60ee9b68381b7149f11d1ac2.js"></script>
 
 
-</div>
+        <h2 class="subheading">Analyzing the problem.</h2>
+
+        <p>How do we know what the Zoom host code might be? Well, they tell us:</p>
+
+        <figure>
+            <img src="https://miro.medium.com/max/1925/1*ou3yNk1z_DFKCSrGF67olA.png" alt="zoom code" style="width:100%">
+        </figure>
+
+        <p>Part of my interest in this code is that it presents itself as a real-world version of a word problem that you may see on a test. What we want to find are all possible 6 digit, 7 digit, 8 digit, 9 digit, and 10 digit numbers. Because order
+            matters, we are looking for all permutations of 6–10 digit numbers with repetition. We can find the number of possible codes with the following formula: <em>n<sup>r</sup></em>, where n is the number of possible digit values for each
+            ‘space’ in the key (0–9), and r is the number of digits in the key (r=10 for a 10 digit code). For a 10 digit code, we would have 10 billion possible numbers (10¹⁰).</p>
+
+        <figure>
+            <img src="https://miro.medium.com/max/2450/1*oXYwUWs8q8dWiwxQzlZ7qQ.png" alt="complexity" style="width:100%; background-color:rgba(249, 242, 236, 0.62)">
+        </figure>
+
+        <p>We’ve figured out how many possible host keys there will be, but how do we find each possible host key? We use the cartesian product.</p>
+
+        <p>In python we can use itertools.product() to generate all of the possible host keys for a given digit length (6 digit code, 7 digit code etc.).</p>
+
+        <script src="https://gist.github.com/brenfrrs/c5e42fcc3b3813b05905787ee7e49d89.js"></script>
+
+        <p>Above, we have a function that:</p>
+        <ul>
+            <li>Generates all of the possible n digit codes.</li>
+            <li>Casts the resulting numbers as a list of lists of digits.</li>
+            <li>Appending each resulting code to the master_key list.</li>
+            <li>Turn the master_key list into an iterable, this way we can call next() to receive the next code in the list.</li>
+        </ul>
+
+        <h2 class="subheading">Interacting with Zoom via pyautogui/pyperclip.</h2>
+
+        <p>Now that we can generate lists of all possible codes (more on this later), we need to interact with the Zoom interface in order to input those codes. For this we will use pyperclip, which allows us to save a list element as a string to the
+            clipboard, and pyautogui which allows us to search for and interact with elements on the screen.</p>
+
+        <script src="https://gist.github.com/brenfrrs/0fe5786882b8499dfa140efc072f2802.js"></script>
+
+        <p>By passing the file path of a screenshot of a visual element on the screen, <a href="https://pyautogui.readthedocs.io/en/latest/screenshot.html">locateOnScreen()</a> will search the screen and return the coordinates of the item if it is
+            found. We can then use <a href="https://pyautogui.readthedocs.io/en/latest/mouse.html#mouse-clicks">click(x,y)</a> to click on the screen position. Because I am using a 4K display, I need to cut the resolution in half by multiplying each
+            coordinate by .5.</p>
+
+        <p>In the above code, we perform the following tasks:</p>
+
+        <ol>
+            <li>Locate the ‘Claim Host’ button.</li>
+            <li>Finding the coordinates of the center of the button on the screen.</li>
+            <li>Clicking the button.</li>
+        </ol>
+
+        <figure>
+            <img src="https://miro.medium.com/max/539/1*hM0BaomuztV7I5BRyv4FWA.png" alt="claim_host_button" style="width:30%">
+        </figure>
+
+        <p>After the ‘Claim Host’ button is clicked the following input box appears center screen:</p>
+
+        <figure>
+            <img src="https://miro.medium.com/max/2450/1*QemUXo2mjPvXG-Jt7ir6MA.png" alt="claim_host_button" style="width:100%">
+        </figure>
+
+        <p>Lastly, after a number is entered, a blue ‘Claim Host’ button appears next to the input box:</p>
+
+        <figure>
+            <img src="https://miro.medium.com/max/2268/1*LGaNREG5KFwBDQ0RJx1g9g.png" alt="claim_host_button" style="width:100%">
+        </figure>
+
+        <p>We can automate the host key input by placing out mouse and keyboard movements at the appropriate position within script. We will break the tasks of copying/pasting/clicking into functions, then at the end of the script call the functions
+            in the order we need them to execute. Then we are going to call that driver function at the end of the script recursively, so it will run until either the programs crashes or the master_key generator is consumed. We will use Pyperclip to
+            copy each key from the master_key list to the clipboard, at each loop iteration. Let’s look at the code.</p>
+
+        <script src="https://gist.github.com/brenfrrs/e4bc29d65b920416ee78a3a3af45d21a.js"></script>
+
+        <h2 class="subheading">Performance</h2>
+
+        <figure>
+            <img src="https://miro.medium.com/max/2100/1*y1kJbzp6tGRFMOz754FSiA.gif" alt="claim_host_button" style="width:100%">
+        </figure>
+
+        <p>As we can see from the above gif, this code works — but not well. We can look at a rough estimate of how long each loop takes to complete.</p>
+
+        <figure>
+            <img src="https://miro.medium.com/max/2450/1*LfXvVdhNLBLIkpbpdYTOGQ.png" alt="execution_times" style="width:100%">
+        </figure>
+
+        <p>After 100 iterations of the loop, it took our driver function and average of 2.6690 seconds to complete the necessary processes. Using a 2016 Macbook Pro with 2.7 GHz Quad-Core Intel Core i7 processor it will take on average:</p>
+
+        <ul>
+            <li>4.413 weeks to crack, if we needed the last 6 digit host code.</li>
+            <li>44.130 weeks to crack, , if we needed the last 7 digit host code.</li>
+            <li>8.463 years to crack, if we needed the last 8 digit host code.</li>
+            <li>84.663 years to crack, if we needed the last 9 digit code.</li>
+            <li>If we were unlucky, and the key we needed was the last 10 digit number in the master key list, 9999999999, it would take approximately 846.334 years to obtain the correct host code.</li>
+        </ul>
+
+        <p>Good Luck!</p>
+
+        <h2 class="subheading">Next Steps.</h2>
+
+        <p>In the future, it would be interesting to revisit this project, dig deep into the nitty gritty of the operations taking place within the script, and see how performance could be improved. I should also make the necessary changes to deal
+            with a correct guess, so in 800 years maybe i’ll receive a nice ‘success’ message. Check my <a href="https://github.com/brenfrrs/zoom_host_key_solver">github repository</a> to see if I was able to make any progress, or share suggestions
+            below!</p>
+
+
+    </div>
 </body>
 {% endblock %}

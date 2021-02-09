@@ -1,13 +1,14 @@
 <!doctype html>
 <html lang="en">
+
 <head>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta charset="utf-8">
-  <meta name="description" content="The digital home of Brendan Ferris. Here, you can find information about me, data science related blogs, and unique datasets that you can use for your own projects."/>
-  <link rel="icon" href="static/robot1.svg">
-  <link rel="stylesheet" type="text/css" href="static/styles.css"/>
-  <title>Brendan Ferris</title>
-  <script src = "https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <meta name="description" content="The digital home of Brendan Ferris. Here, you can find information about me, data science related blogs, and unique datasets that you can use for your own projects." />
+    <link rel="icon" href="static/robot1.svg">
+    <link rel="stylesheet" type="text/css" href="static/styles.css" />
+    <title>Brendan Ferris</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
 <!--
  ___                 _             ___            _
@@ -20,25 +21,29 @@ LinkedIn: >>> https://www.linkedin.com/in/brendangferris/
 GitHub: >>>>> https://github.com/brenfrrs
 Medium: >>>>> https://brendanfrrs.medium.com/
 -->
+
 <body>
-<div>
-    <div class="botText">
-        <p><img class="robot_pic" src="static/robotics.svg"/>Hey, I'm [Cyber]Brendan. It's great to meet you! You can start by typing, `tell me about yourself` below. At times, my virtual self will reply with audio responses. Depending on where you are, you may want to mute your device or wear headphones.</p>
+    <div>
+        <div class="botText">
+            <p><img class="robot_pic" src="static/robotics.svg" />Hey, I'm [Cyber]Brendan. It's great to meet you! You can start by typing, `tell me about yourself` below. At times, my virtual self will reply with audio responses. Depending on where
+                you are, you may want to mute your device or wear headphones.</p>
+        </div>
+        <div id="chatbox">
+            <!-- All the text goes here -->
+        </div>
     </div>
-<div id = "chatbox">
-<!-- All the text goes here -->
-</div>
-</div>
-<div class="footer">
-    <div id = "userInput">
-        <div id=searchform>
-            <div id="inputs">
-                <input id ="textInput" type ="text" name="msg" placeholder="Ask me something.. Or type 'help'">
-                <p id="foot"><a href="/projects" class="footer_links">Projects</a> | <a href="/datasets" class="footer_links">Datasets</a> | <a href="/blog" class="footer_links">Blog</a> | <a href="/" class="current_pg">Chat</a> | <a href="/about" class="footer_links">About</a></p>
+    <div class="footer">
+        <div id="userInput">
+            <div id=searchform>
+                <div id="inputs">
+                    <input id="textInput" type="text" name="msg" placeholder="Ask me something.. Or type 'help'">
+                    <p id="foot"><a href="/projects" class="footer_links">Projects</a> | <a href="/datasets" class="footer_links">Datasets</a> | <a href="/blog" class="footer_links">Blog</a> | <a href="/" class="current_pg">Chat</a> | <a
+                            href="/about" class="footer_links">About</a></p>
+                </div>
             </div>
         </div>
     </div>
-</div>
-<script type="text/javascript" src="{{ url_for('static', filename = 'scripts.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename = 'scripts.js') }}"></script>
 </body>
+
 </html>
