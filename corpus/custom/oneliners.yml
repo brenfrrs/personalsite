@@ -154,3 +154,5 @@ conversations:
   - <script>click_section(2)</script>
 - - cd about
   - <script>click_section(3)</script>
+- - pwd
+  - Can't do that, but I can <em>cd</em> into different sections. For example <em>`cd blog`</em> works. You can also type <em>`clear`</em> to clear the conversation and start fresh.
