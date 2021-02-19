@@ -78,3 +78,9 @@ $cell.find('.js-collapser').click(function() {
   $cell.not($thisCell).removeClass('is-inactive');
 
 });
+
+
+$('.toggle-menu').click (function(){
+  $(this).toggleClass('active');
+  $('#menu').toggleClass('open');
+});
