@@ -3,6 +3,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 /* ^ for large bold code ^ */
 
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap');
+
+
 html {
     scroll-behavior: smooth;
 }
@@ -196,6 +199,90 @@ white-space: normal;
     display: none;
 }
 
+/* --------------- desktop nav ---------------- */
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap');
+
+.desktop_nav {
+  display:block;
+  width: 100%;
+  position: fixed;
+  top: 20px;
+  text-align: center;
+}
+.desktop_nav a {
+  font-family: 'Source Sans Pro', sans-serif;
+  font-weight: 500;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: #44c767;
+  margin: 0 2.5%;
+  font-size: 1.4em;
+  letter-spacing: 1px;
+  position: relative;
+  display: inline-block;
+}
+.desktop_nav a:before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 3px;
+  background: #e0dfe6;
+  top: 47%;
+  animation: out 0.2s cubic-bezier(1, 0, 0.58, 0.97) 1 both;
+}
+.desktop_nav a:hover:before {
+  animation: in 0.2s cubic-bezier(1, 0, 0.58, 0.97) 1 both;
+}
+@keyframes in {
+  0% {
+    width: 0;
+    left: 0;
+    right: auto;
+  }
+  100% {
+    left: 0;
+    right: auto;
+    width: 100%;
+  }
+}
+@keyframes out {
+  0% {
+    width: 100%;
+    left: auto;
+    right: 0;
+  }
+  100% {
+    width: 0;
+    left: auto;
+    right: 0;
+  }
+}
+@keyframes show {
+  0% {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.desktop_nav a:nth-child(1) {
+  animation: show 0.2s 0.1s ease 1 both;
+}
+.desktop_nav a:nth-child(2) {
+  animation: show 0.2s 0.2s ease 1 both;
+}
+.desktop_nav a:nth-child(3) {
+  animation: show 0.2s 0.3s ease 1 both;
+}
+.desktop_nav a:nth-child(4) {
+  animation: show 0.2s 0.4s ease 1 both;
+}
+.desktop_nav a:nth-child(5) {
+  animation: show 0.2s 0.5s ease 1 both;
+}
+
 /* ----- css for the text input box -----*/
 
 #inputs {
@@ -273,7 +360,7 @@ input[type="text"] {
 }
 
 .footer_links {
-    color : #6f0be4;
+    color : #666666;
 }
 
 .current_pg {
@@ -294,16 +381,9 @@ img.robot_pic {
     box-sizing: border-box;
 }
 
-/* input#buttonInput {
-    background-color: #121212;
-    border: none;
-    color: #121212;
-} */
-
-/* #chatbox {
-    z-index: 0;
-} */
-
+.bot_text {
+    margin-top:5%;
+}
 
 p.botText, p.userText {
     word-wrap: break-word
@@ -378,6 +458,14 @@ tr:nth-child(even) {
 
     .nav {
         display: block;
+    }
+
+    .desktop_nav {
+        display: none;
+    }
+
+    .bot_text {
+        margin-top:0px;
     }
 
     #foot {
