@@ -1,0 +1,75 @@
+{% extends "article_base.html" %}
+
+{% block body %}
+
+<body>
+    <div class="header_img_container">
+        <img id="header_img" src="static/blog_imgs/coconut.jpeg" alt="#"></img>
+    </div>
+
+    <h1 id="title_text">Survival Analysis: censoring, survival functions, hazard functions.</h1>
+
+    <div class="content">
+
+
+        <p class="subhead">Often neglected in the implementations of the most popular machine learning and statistical analysis frameworks is survival analysis. Simply, survival analysis is the time it takes for an event of interest to occur. Although that seems pretty straight forward, the reality is a little more complicated. In this article, we will go through some of the high level concepts necessary to understand when conducting survival analysis, or deciding if it is the right tool for your problem.</p>
+
+        <h2 class="subheading">What problems does survival analysis solve?</h2>
+
+        <p>As you may have guessed by the name, survival analysis has historically been employed by the medical research community to measure the survival rate on certain drugs or treatments for various conditions. This is far from its only use, as it is also commonly used in business. You can use survival analysis to predict when one of your current customers will stop using your service (<a href="https://blog.hubspot.com/service/what-is-customer-churn">churn</a>), or when a machine you made will break (<a href="http://userwww.sfsu.edu/efc/classes/biol710/survival/surv-anal.htm">failure-time analysis</a>). Sociologists use survival analysis to predict the occurrence and timing of events (<a href="https://www.encyclopedia.com/social-sciences/encyclopedias-almanacs-transcripts-and-maps/event-history-analysis">event-history analysis</a>).</p>
+
+        <p>You might be asking yourself “aren’t there other tools, such as regression or classification, that can solve this problem?”. The answer is, no. The reason? Censoring.</p>
+
+        <h2 class="subheading">Censoring.</h2>
+
+        <p>Censored subjects are those which have not experienced the event of interest within the observation window. Let’s pretend that we are researchers sent to the <a href="https://en.wikipedia.org/wiki/Bonin_Islands">Ogasawara Islands</a> to study the survival of the native snail populations, against the ship rats (<a href="https://www.pestdetective.org.nz/culprits/ship-rat/">Rattus rattus</a>)that infest the islands. <a href="https://www.sciencedirect.com/science/article/abs/pii/S0006320710001436?via%3Dihub">Studies show</a> that the increase in ship rat populations on the islands has led to a decline in the land snail species (specifically, snails with larger shells that live above-ground/on trees). We arrive at the island, with enough funding and supplies to observe the larger, above-ground snails for 1 month.</p>
+
+        <figure>
+            <img src="https://miro.medium.com/max/1280/1*wE22siR9RLmTaT6nEohGGw.jpeg" alt="Rattus Rattus" style="width:100%">
+            <figcaption>Rattus rattus — murderers of the helpless land-dwelling snails of the Ogasawara Islands. Credit: Kilessan, CC BY-SA 3.0 <a href="https://creativecommons.org/licenses/by-sa/3.0">https://creativecommons.org/licenses/by-sa/3.0</a>>, via Wikimedia Commons</figcaption>
+        </figure>
+
+        <p>In our example, let’s pretend we can observe 500 of the above mentioned ground snails when they enter our observation zone, which is a 1-acre portion of land in the forest. When the snails enter this zone, we can observe them. We also magically have a lot of data on the snails, features such as: shell diameter, weight, time spent in trees, time spent on the ground. Now we will sit, and wait to document our snail friends who get eaten by the rats, or live to tell the tale.</p>
+
+        <p>After one month, we have recorded all of the times snails were eaten by rats, but our funding has run out and we have to go. All of the snails which we have observed throughout the month and are B: still alive or C: left the observation area, are considered <strong>right censored</strong>. The event of interest (their death) has not occurred within the observation period.</p>
+
+        <figure>
+            <img src="https://miro.medium.com/max/1400/1*ZSoVGXtZc10hG5EXQa7DQw.png" alt="Right Censoring" style="width:100%">
+            <figcaption>Image by author.</figcaption>
+        </figure>
+
+        <p>Right censoring is the most common type of censoring, and also the only one that makes sense in our snail example. With traditional classification and regression models, all of the observation falling into category B and C would have to be discarded. With survival analysis, we can use all of the observations to predict the probability of an event happening at a particular time.</p>
+
+        <h2 class="subheading">Survival and Hazard functions.</h2>
+
+        <figure>
+            <img src="https://miro.medium.com/max/864/1*zK1EalGRV41xScD_fy8WSw.png" alt="Survival Function" style="width:100%">
+            <figcaption>Image by author.</figcaption>
+        </figure>
+
+        <p>Survival functions <i>S(t)</i>, are usually represented with the time on the x-axis, and the probability of an event occurring on the y-axis. If the blue line in the above graph were flat, staying close to 100% as the days went on, then that would be good news for the snails — it means many survive across the observation period. However, in the above example (fictional data was used for the graph) we can see a gradual decline in survival followed by a steep decline on day 20. This suggests poor survival for the snails.</p>
+
+        <p>The hazard <i>h(t)</i>, is the probability that a snail who is under observation at time t has an “event” (is killed by rats) at that time. The only difference between the survival function and the hazard function is that the former is focused on not having the event and the latter is focused on the event occurring.</p>
+
+        <figure>
+            <img src="https://miro.medium.com/max/864/1*TJ6Tw1TMShNEDP_CPDv96w.png" alt="Hazard Function" style="width:100%">
+            <figcaption>Image by author.</figcaption>
+        </figure>
+
+        <h2 class="subheading">Conclusion.</h2>
+
+        <p>When all is said and done, the outlook for the poor snails on the Ogasawara Islands is bleak at best. But with survival analysis, we are able to predict the times of a snails demise with greater effectiveness than other methods. This is just scratching the surface of a very complicated subject, but it’s good to have a grasp of these foundational concepts before moving on to the harder stuff. In the future, I plan to dig a little deeper and implement some survival analysis models with <a href="https://square.github.io/pysurvival/">pysurvival.</a></p>
+
+        <p>Until then, happy coding!</p>
+
+        <h2 class="subheading">Sources.</h2>
+
+        <a href="https://square.github.io/pysurvival/intro.html">https://square.github.io/pysurvival/intro.html</a>
+        <a href="http://userwww.sfsu.edu/efc/classes/biol710/survival/surv-anal.htm">http://userwww.sfsu.edu/efc/classes/biol710/survival/surv-anal.htm</a>
+        <a href="https://sphweb.bumc.bu.edu/otlt/mph-modules/bs/bs704_survival/BS704_Survival_print.html">https://sphweb.bumc.bu.edu/otlt/mph-modules/bs/bs704_survival/BS704_Survival_print.html</a>
+        <a href="http://www.sthda.com/english/wiki/survival-analysis-basics">http://www.sthda.com/english/wiki/survival-analysis-basics</a>        
+
+
+    </div>
+</body>
+{% endblock %}
