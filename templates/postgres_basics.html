@@ -1,0 +1,196 @@
+{% extends "article_base.html" %}
+
+{% block body %}
+
+<body>
+    <div class="header_img_container">
+        <img id="header_img" src="static/blog_imgs/server.jpeg" alt="#"></img>
+    </div>
+
+    <h1 id="title_text">PostgreSQL: basics to get you up and running.</h1>
+
+    <div class="content">
+
+
+        <p class="subhead">PostgreSQL is an open-source Relational Database Management System (RDMS) thats popular for a number of reasons: It’s free, it’s secure, it supports custom functions, it’s object relational model architecture, and unlimited rows per table. <a href="https://tapoueh.org/blog/2018/03/object-relational-database-management-system/">Check out this article</a> for a more in-depth breakdown. PostgreSQL is also used by many major companies including: <a href="https://www.postgresql.org/message-id/E0A4DA8CB358A94E860A1C604DCE0482B297999DD7@NDJSSCC01.ndc.nasa.gov">NASA</a>, <a href="https://blog.twitch.tv/pl-pl/2016/10/11/how-twitch-uses-postgresql-c34aa9e56f58/">Twitch</a>, <a href="https://www.networkworld.com/article/2220344/apple-ditches-mysql-in-favor-of-postgresql.html">Apple</a>, and <a href="https://kevin.burke.dev/kevin/reddits-database-has-two-tables/">Reddit</a>. In this article we are going touch on the basics of PostgreSQL so you can get up and running fast.</p>
+
+        <h2 class="subheading">Downloading PostgreSQL and pgAdmin4.</h2>
+
+        <p>On a Mac, the process of downloading postgres is simplified thanks to the <a href="https://postgresapp.com/">postgress.app</a> installation package. Simply download the desired release, and save the app to the applications folder.</p>
+
+        <figure>
+            <img src="https://miro.medium.com/max/1400/1*m-noQ-1VGDeI_LOLy8ti8A.png" alt="postgres app" style="width:100%">
+        </figure>
+
+        <p>After downloading, you should be able to double click on the blue elephant icon and see something similar to this pop up on your screen. Note: The databases shown will be different for you, but will include both <span class="filenames"><em>postgres</em></span> and <span class="filenames"><em>template1</em></span> databases.</p>
+
+
+        <figure>
+            <img src="https://miro.medium.com/max/1400/1*PFDCt7CKcVVPzHfwhSGNjw.png" alt="database view" style="width:100%">
+        </figure>
+
+        <p><span class="filenames"><em>template1</em></span> is a <a href="https://www.postgresql.org/docs/9.5/manage-ag-templatedbs.html">template database</a>. By default, postgres uses the <span class="filenames"><em>template1</em></span> database to create new databases whenever you run the <span class="filenames"><em>CREATE DATABASE</em></span> SQL query. Please see <a href="https://hashrocket.com/blog/posts/exploring-the-default-postgres-template-databases">this tutorial</a> for a walkthrough on changing <span class="filenames"><em>template1</em></span>.</p>
+
+        <p>Now, you should <a href="https://www.pgadmin.org/download/pgadmin-4-macos/">download PgAdmin4</a>, which is the desktop GUI interface that is commonly used to interact with postgres databases. Keep in mind that when you first installed postgres, it came with <span class="filenames"><em>psql</em></span> . You should be able to type psql in your terminal, and control your database through the CLI in the same way you can control it using pgAdmin’s GUI.</p>
+
+        <figure>
+            <img src="https://miro.medium.com/max/1400/1*KrG2FPlCWIqjxvTEhwZkkw.png" alt="pgadmin gui" style="width:100%">
+            <figcaption>PgAdmin4 GUI</figcaption>
+        </figure>
+
+        <figure>
+            <img src="https://miro.medium.com/max/1400/1*dPoxJKchV6YXSLkeKicBqw.png" alt="psql cli" style="width:100%">
+            <figcaption>psql command line interface</figcaption>
+        </figure>
+
+        <p>Think of the difference between psql and PgAdmin as similar to the difference between using github from the command line and the github desktop GUI.</p>
+
+        <div class="custom_aside">
+            <p>For the sake of simplicity, we will focus on how to perform basic actions using the pgAdmin GUI — but keep in mind that this <a href="http://postgresguide.com/utilities/psql.html">can all be done through the command line using psql.</a> The data used in this article is a subset of the <a href="https://www.transportation.gov/gis/national-address-database/national-address-database-0">National Address Database (NAD)</a> that was compiled by the Department of Transportation. And you can download the .csv used in this article <a href="static/datasets/addresses.csv.zip" download="addresses.csv.zip">here.</a></p>
+        </div>
+
+        Let’s create a database called <span class="filenames"><em>blog</em></span> :
+
+
+        <figure>
+            <img src="https://miro.medium.com/max/1400/1*s8MZ4lXD-yoax287rfl0PQ.png" style="width:100%">
+            <figcaption>right click on `database`</figcaption>
+        </figure>
+
+        <figure>
+            <img src="https://miro.medium.com/max/1400/1*ALkzOofXvuTBE1FvXwhozw.png" style="width:100%">
+            <figcaption>name the database `blog` then save.</figcaption>
+        </figure>
+
+        <p>Now, we’ll see the <span class="filenames"><em>blog</em></span> database in the left browser window. When we click on the <span class="filenames"><em>blog</em></span> database, it will turn yellow indicating that we have connected to the database, and expand so we can see things like triggers, extensions, and schemas.</p>
+
+        <figure>
+            <img src="https://miro.medium.com/max/1288/1*J5CH4euP0VrEyAUdk_xiMg.png" style="width:100%">
+            <figcaption>before click.</figcaption>
+        </figure>
+
+        <figure>
+            <img src="https://miro.medium.com/max/1400/1*feY_iFXjtP_Kg37NInC5lw.png" style="width:100%">
+            <figcaption>after click.</figcaption>
+        </figure>
+
+        <p>Now lets click on the Schemas menu, to reveal the tables tab. In this tutorial, we are going to take data from a csv, and load it into postgres.</p>
+
+        <figure>
+            <img src="https://miro.medium.com/max/1400/1*HviPXYyXp7CDszzuTsTAaA.png" style="width:100%">
+            <figcaption>right click on tables.</figcaption>
+        </figure>
+
+        <p>Right click on <span class="filenames"><em>Tables</em></span> then create a new table called ‘mailboxes’.</p>
+
+        <figure>
+            <img src="https://miro.medium.com/max/1400/1*dAlUssRPrNaSML-Hagx1OA.png" style="width:100%">
+        </figure>
+
+        <figure>
+            <img src="https://miro.medium.com/max/1400/1*59vGx83vh32HDjzfWUVy-w.png" style="width:100%">
+        </figure>
+
+        <p>Now we need to declare the columns in our database. This is an important step and the columns of the mailboxes table need to match the columns of the .csv file that we plan to import. This includes an index column, do not forget to include the index column if your .csv has one. In our case, I don’t have an index column.</p>
+
+        <p>The columns present in our addresses.csv file are as follows:</p>
+
+        <ul>
+            <li>State</li>
+            <li>Post_Comm</li>
+            <li>StreetName</li>
+            <li>StN_PosDir (North,South,East,West)</li>
+            <li>Add_Number (address number)</li>
+            <li>StN_PosTyp (Street/Drive/Lane/Court/Place/Road etc.)</li>
+        </ul>
+
+        <p>Let’s click on the Columns tab and add the above mentioned columns to the table. Adding columns also requires that we declare the data types of each column. It sometimes makes sense to set all columns to text when importing a file, then dealing with changing the datatype after the import. In our case we can keep all the data as text.</p>
+
+        <figure>
+            <img src="https://miro.medium.com/max/1400/1*VFwP8USVlHooI8UiRE-FCA.png" style="width:100%">
+        </figure>
+
+        <p>We should now see all of our columns in the mailboxes table.</p>
+
+
+        <figure>
+            <img src="https://miro.medium.com/max/1188/1*YZvNZqlRQZ86-jfwCNq2jA.png" style="width:100%">
+        </figure>
+
+        <h2 class="subheading">Importing CSV data into PostgreSQL.</h2>
+
+        <p>In order to bring the data from <span class="filenames"><em>addresses.csv</em></span> into the <span class="filenames"><em>mailboxes</em></span> table, we need to use the pgAdmin query tool on the <span class="filenames"><em>mailboxes</em></span> table.</p>
+
+        <figure>
+            <img src="https://miro.medium.com/max/1400/1*9PygWPJKhplcj9Mm-VWptQ.png" style="width:100%">
+        </figure>
+
+        <p>Now use the following SQL query to load the CSV into postgres.</p>
+
+        <span class="filenames"><em>COPY mailboxes</em></span><br>
+        <span class="filenames"><em>FROM</em></span><br>
+        <span class="filenames"><em>'/Users/brendanferris/Desktop/scripts/vehicle_analysis/addresses.csv'</em></span><br>
+        <span class="filenames"><em>DELIMITER ','</em></span><br>
+        <span class="filenames"><em>CSV HEADER;</em></span><br>
+
+        <p>Don’t forget that mailboxes is the name of the table we want to send the CSV information to, and the order of the columns in the mailboxes table matches the order of the columns in the <span class="filenames"><em>addresses.csv</em></span>file. The <em>CSV HEADER</em> indicates that the first row of the <span class="filenames"><em>addresses.csv</em></span> file are column names and should be skipped, and the <em>DELIMITER</em> is ',' because a CSV is a <em>comma separated file.</em></p>
+
+        <p>You can use F5 within the query tool to run a query, and after you run the query above you should see the following output:</p>
+
+        <figure>
+            <img src="https://miro.medium.com/max/1400/1*q92cLDAqbYfLagjrpGg7yQ.png" style="width:100%">
+        </figure>
+
+        <p>To make sure that all of our information in now in our SQL database, grab and return all of the rows using the following query:</p>
+
+        <p><span class="filenames"><em>SELECT * FROM mailboxes;</em></span></p>
+
+        <p>Then hit F5 to run the query. You should see all of the table information in the Data Output window of pgAdmin.</p>
+
+        <figure>
+            <img src="https://miro.medium.com/max/1400/1*yblcp0_YhYDeJBG4LtwXBg.png" style="width:100%">
+        </figure>
+
+        <h2 class="subheading">Exporting the results of a query as a CSV.</h2>
+
+        <p>Let’s say we run an SQL query on our address information, and want to output that information as a CSV file. First, let's write a query to make the addresses more readable.</p>
+
+        <p><span class="filenames"><em>SELECT CONCAT(addressnumber, ' ', streetdirection, ' ', streetname, ' ', stn_postyp, ' ', comm, ' ', state) as formatted_address FROM mailboxes</em></span></p>
+
+        <figure>
+            <img src="https://miro.medium.com/max/1400/1*q_zA18iRX643sRWP12-P6A.png" style="width:100%">
+        </figure>
+
+        <p>Oops, it seems that the <span class="filenames"><em>NULL</em></span> entries in the <em>streetdirection</em> column are strings, and not actual postgres null values. Because of this, we should replace all of the <span class="filenames"><em>NULL</em></span> strings with empty strings. This way, when we compile the address we will only add a street direction if one is needed. To replace all of the <span class="filenames"><em>NULL</em></span> strings in the <em>streetdirection</em> column with empty strings, run the following query.</p>
+
+        <span class="filenames"><em>UPDATE mailboxes</em></span><br>
+        <span class="filenames"><em>SET streetdirection = REPLACE(streetdirection,'NULL','');</em></span>
+
+        <p>Now, the <span class="filenames"><em>NULL</em></span> is replaced with an empty string, and we can properly format the street names using the <span class="filenames"><em>CONCAT</em></span> query from before:</p>
+
+        <figure>
+            <img src="https://miro.medium.com/max/1400/1*0hLySU3nj_aOQiRepuMZ1Q.png" style="width:100%">
+        </figure>
+
+        <figure>
+            <img src="https://miro.medium.com/max/1340/1*gHxgsRMCXTBhOJRwtRHAxQ.png" style="width:100%">
+        </figure>
+
+        <p>In order to save these to their own CSV, we need to wrap the <span class="filenames"><em>CONCAT</em></span> query around the <span class="filenames"><em>COPY</em></span> keyword, specify the destination and name of the output file, as well as the delimiter. Here is the format:</p>
+
+
+        <span class="filenames"><em>COPY ([Query]) TO '[File Path]' DELIMITER ',' CSV HEADER;</em></span><br>
+
+        <p>This gets a little messy, but if you copy and paste this query into your query editor, it should be easier to read:</p>
+
+
+        <span class="filenames"><em>COPY (SELECT CONCAT(addressnumber, ' ', streetdirection, ' ', streetname, ' ', stn_postyp, ' ', comm, ' ', state) as formatted_address FROM mailboxes) TO '/Users/brendanferris/Desktop/scripts/vehicle_analysis/output.csv' DELIMITER ',' CSV HEADER;</em></span><br>
+
+        <p>Now, the desired data will be located in a CSV on the file path that you specified!</p>
+
+
+
+
+    </div>
+</body>
+{% endblock %}
