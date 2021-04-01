@@ -77,7 +77,7 @@ def article5_page():
 
 @app.route("/postgres_basics")
 def article6_page():
-    return render_template("survival_analysis.html", article_title='Brendan Ferris | PostgreSQL: basics to get you up and running.')
+    return render_template("postgres_basics.html", article_title='Brendan Ferris | PostgreSQL: basics to get you up and running.')
 
 
 if __name__ == "__main__":
